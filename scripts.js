@@ -133,11 +133,12 @@ const recipes = [
     });
   }
 
+  //avoid spam overload
   function onRandomizeButtonClick() {
     shuffleArray(recipes);
     displayRecipes();
   }
-  
+
   document.getElementById("difficulty").addEventListener("change", displayRecipes);
   document.getElementById("food").addEventListener("change", displayRecipes);
   document.getElementById("base").addEventListener("change", displayRecipes);
@@ -147,4 +148,3 @@ const recipes = [
   
   // Initial display of recipes
   displayRecipes();
-  

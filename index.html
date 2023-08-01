@@ -13,7 +13,7 @@
     </div>
     <div class="filter">
       <label for="difficulty">Difficulty:</label>
-      <select id="difficulty">
+      <select class="dropdown" id="difficulty">
         <option value="all">All</option>
         <option value="easy">Easy</option>
         <option value="medium">Medium</option>
@@ -37,12 +37,13 @@
       <label for="origin">Origin:</label>
       <input type="text" id="origin" />
       <button id="randomize-btn">Randomize</button>
+      <button type="submit">Add Recipe</button>
     </div>
 
     <div class="grid-container" id="recipes-container">
       <!-- Recipes will be dynamically added here -->
     </div>
-
-    <script src="scripts.js"></script>
+    <script type="text/javascript" src="./scripts.js"></script>
+    <script type="text/javascript" src="./recipes.js"></script>
   </body>
 </html>
