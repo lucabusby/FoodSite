@@ -7,6 +7,7 @@ const recipes = [
       origin: "Italy, Europe",
       imageLink: "https://www.bettybossi.ch/rdbimg/bb_apxx030601_0075a/bb_apxx030601_0075a_r01_v005_x0010.jpg",
       link: "https://lucabusby.github.io/FoodSite/",
+      notes: "this is very",
     },
     {
       name: "Veggie Stir-Fry",
@@ -16,6 +17,7 @@ const recipes = [
       origin: "China, Asia",
       imageLink: "https://food-images.files.bbci.co.uk/food/recipes/sachas_stir-fry_17077_16x9.jpg",
       link: "https://lucabusby.github.io/FoodSite/",
+      notes: "",
     },
     {
       name: "Boeuf Bourguignon",
@@ -25,7 +27,132 @@ const recipes = [
       origin: "France, Europe",
       imageLink: "https://instakoch.de/wp-content/uploads/2022/09/Boeuf-Bourguignon-050922-5x4-002-scaled.jpg",
       link: "https://lucabusby.github.io/FoodSite/",
+      notes: "",
     },
+    {
+      name: "Pasta Carbonara",
+      difficulty: "easy",
+      food: "meat",
+      base: "pasta",
+      origin: "Italy, Europe",
+      imageLink: "https://www.bettybossi.ch/rdbimg/bb_apxx030601_0075a/bb_apxx030601_0075a_r01_v005_x0010.jpg",
+      link: "https://lucabusby.github.io/FoodSite/",
+      notes: "this is very",
+    },
+    {
+      name: "Veggie Stir-Fry",
+      difficulty: "medium",
+      food: "vegetarian",
+      base: "none",
+      origin: "China, Asia",
+      imageLink: "https://food-images.files.bbci.co.uk/food/recipes/sachas_stir-fry_17077_16x9.jpg",
+      link: "https://lucabusby.github.io/FoodSite/",
+      notes: "",
+    },
+    {
+      name: "Boeuf Bourguignon",
+      difficulty: "hard",
+      food: "meat",
+      base: "none",
+      origin: "France, Europe",
+      imageLink: "https://instakoch.de/wp-content/uploads/2022/09/Boeuf-Bourguignon-050922-5x4-002-scaled.jpg",
+      link: "https://lucabusby.github.io/FoodSite/",
+      notes: "",
+    },
+    {
+      name: "Pasta Carbonara",
+      difficulty: "easy",
+      food: "meat",
+      base: "pasta",
+      origin: "Italy, Europe",
+      imageLink: "https://www.bettybossi.ch/rdbimg/bb_apxx030601_0075a/bb_apxx030601_0075a_r01_v005_x0010.jpg",
+      link: "https://lucabusby.github.io/FoodSite/",
+      notes: "this is very",
+    },
+    {
+      name: "Veggie Stir-Fry",
+      difficulty: "medium",
+      food: "vegetarian",
+      base: "none",
+      origin: "China, Asia",
+      imageLink: "https://food-images.files.bbci.co.uk/food/recipes/sachas_stir-fry_17077_16x9.jpg",
+      link: "https://lucabusby.github.io/FoodSite/",
+      notes: "",
+    },
+    {
+      name: "Boeuf Bourguignon",
+      difficulty: "hard",
+      food: "meat",
+      base: "none",
+      origin: "France, Europe",
+      imageLink: "https://instakoch.de/wp-content/uploads/2022/09/Boeuf-Bourguignon-050922-5x4-002-scaled.jpg",
+      link: "https://lucabusby.github.io/FoodSite/",
+      notes: "",
+    },
+
+    {
+      name: "Pasta Carbonara",
+      difficulty: "easy",
+      food: "meat",
+      base: "pasta",
+      origin: "Italy, Europe",
+      imageLink: "https://www.bettybossi.ch/rdbimg/bb_apxx030601_0075a/bb_apxx030601_0075a_r01_v005_x0010.jpg",
+      link: "https://lucabusby.github.io/FoodSite/",
+      notes: "this is very",
+    },
+    {
+      name: "Veggie Stir-Fry",
+      difficulty: "medium",
+      food: "vegetarian",
+      base: "none",
+      origin: "China, Asia",
+      imageLink: "https://food-images.files.bbci.co.uk/food/recipes/sachas_stir-fry_17077_16x9.jpg",
+      link: "https://lucabusby.github.io/FoodSite/",
+      notes: "",
+    },
+    {
+      name: "Boeuf Bourguignon",
+      difficulty: "hard",
+      food: "meat",
+      base: "none",
+      origin: "France, Europe",
+      imageLink: "https://instakoch.de/wp-content/uploads/2022/09/Boeuf-Bourguignon-050922-5x4-002-scaled.jpg",
+      link: "https://lucabusby.github.io/FoodSite/",
+      notes: "",
+    },
+
+    {
+      name: "Pasta Carbonara",
+      difficulty: "easy",
+      food: "meat",
+      base: "pasta",
+      origin: "Italy, Europe",
+      imageLink: "https://www.bettybossi.ch/rdbimg/bb_apxx030601_0075a/bb_apxx030601_0075a_r01_v005_x0010.jpg",
+      link: "https://lucabusby.github.io/FoodSite/",
+      notes: "this is very",
+    },
+    {
+      name: "Veggie Stir-Fry",
+      difficulty: "medium",
+      food: "vegetarian",
+      base: "none",
+      origin: "China, Asia",
+      imageLink: "https://food-images.files.bbci.co.uk/food/recipes/sachas_stir-fry_17077_16x9.jpg",
+      link: "https://lucabusby.github.io/FoodSite/",
+      notes: "",
+    },
+    {
+      name: "Boeuf Bourguignon",
+      difficulty: "hard",
+      food: "meat",
+      base: "none",
+      origin: "France, Europe",
+      imageLink: "https://instakoch.de/wp-content/uploads/2022/09/Boeuf-Bourguignon-050922-5x4-002-scaled.jpg",
+      link: "https://lucabusby.github.io/FoodSite/",
+      notes: "",
+    },
+
+
     // Add more recipes here
   ];
   
@@ -67,7 +194,10 @@ const recipes = [
     recipeOrigin.textContent = "Origin: " + recipe.origin;
 
     const recipeLink = document.createElement("p");
-    recipeLink.textContent = "Link: " + recipe.link;
+    recipeLink.textContent = "Recipe: " + recipe.link;
+
+    const recipeNotes = document.createElement("p");
+    recipeNotes.textContent = "Notes: " + recipe.notes;
   
     recipeDetails.appendChild(recipeImage);
     recipeDetails.appendChild(recipeName);
@@ -76,6 +206,7 @@ const recipes = [
     recipeDetails.appendChild(recipeBase);
     recipeDetails.appendChild(recipeOrigin);
     recipeDetails.appendChild(recipeLink);
+    recipeDetails.appendChild(recipeNotes);
   
     content.appendChild(closeBtn);
     content.appendChild(recipeDetails);

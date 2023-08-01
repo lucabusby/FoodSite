@@ -3,41 +3,45 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>My Cooking Recipes</title>
+    <title>Cooking</title>
     <link rel="stylesheet" href="styles.css" />
   </head>
   <body>
     <div class="searchbar">
-      <label for="search">Search:</label>
-      <input type="text" id="search" placeholder="Enter recipe name" />
+      <input
+        class="search"
+        type="text"
+        id="search"
+        placeholder="SEARCH RECIPIE"
+      />
     </div>
     <div class="filter">
-      <label for="difficulty">Difficulty:</label>
       <select class="dropdown" id="difficulty">
-        <option value="all">All</option>
+        <option value="all">All Diff.</option>
         <option value="easy">Easy</option>
         <option value="medium">Medium</option>
         <option value="hard">Hard</option>
       </select>
-      <label for="food">Food:</label>
-      <select id="food">
-        <option value="all">All</option>
+      <select class="dropdown" id="food">
+        <option value="all">All Diets</option>
         <option value="meat">Meat</option>
         <option value="vegetarian">Vegetarian</option>
         <option value="vegan">Vegan</option>
       </select>
-      <label for="base">Base:</label>
-      <select id="base">
-        <option value="all">All</option>
+      <select class="dropdown" id="base">
+        <option value="all">All Bases</option>
         <option value="none">None</option>
         <option value="rice">Rice</option>
         <option value="bread">Bread</option>
         <option value="pasta">Pasta</option>
       </select>
-      <label for="origin">Origin:</label>
-      <input type="text" id="origin" />
-      <button id="randomize-btn">Randomize</button>
-      <button type="submit">Add Recipe</button>
+      <input
+        class="input"
+        type="text"
+        id="origin"
+        placeholder="SEARCH ORIGIN"
+      />
+      <button class="button" id="randomize-btn">Randomize</button>
     </div>
 
     <div class="grid-container" id="recipes-container">
