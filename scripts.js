@@ -26,6 +26,7 @@ const recipes = [
     // Add more recipes here
   ];
   
+  //overlay add for recipe
   function createRecipeOverlay(recipe) {
     const overlay = document.createElement("div");
     overlay.classList.add("overlay");
@@ -75,6 +76,16 @@ const recipes = [
     document.body.appendChild(overlay);
   }
 
+  //random order
+  function shuffleArray(array) {
+    // Fisher-Yates (aka Knuth) Shuffle Algorithm
+    for (let i = array.length - 1; i > 0; i--) {
+      const j = Math.floor(Math.random() * (i + 1));
+      [array[i], array[j]] = [array[j], array[i]];
+    }
+  }
+
+  //display iems with filter
   function displayRecipes() {
     const recipesContainer = document.getElementById("recipes-container");
     recipesContainer.innerHTML = "";
@@ -112,12 +123,18 @@ const recipes = [
       }
     });
   }
+
+  function onRandomizeButtonClick() {
+    shuffleArray(recipes);
+    displayRecipes();
+  }
   
   document.getElementById("difficulty").addEventListener("change", displayRecipes);
   document.getElementById("food").addEventListener("change", displayRecipes);
   document.getElementById("base").addEventListener("change", displayRecipes);
   document.getElementById("origin").addEventListener("input", displayRecipes);
   document.getElementById("search").addEventListener("input", displayRecipes);
+  document.getElementById("randomize-btn").addEventListener("click", onRandomizeButtonClick);
   
   // Initial display of recipes
   displayRecipes();
