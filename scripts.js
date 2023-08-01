@@ -5,6 +5,7 @@ const recipes = [
       food: "meat",
       base: "pasta",
       origin: "Italy, Europe",
+      imageLink: "https://www.bettybossi.ch/rdbimg/bb_apxx030601_0075a/bb_apxx030601_0075a_r01_v005_x0010.jpg",
       link: "https://lucabusby.github.io/FoodSite/",
     },
     {
@@ -13,6 +14,7 @@ const recipes = [
       food: "vegetarian",
       base: "none",
       origin: "China, Asia",
+      imageLink: "https://food-images.files.bbci.co.uk/food/recipes/sachas_stir-fry_17077_16x9.jpg",
       link: "https://lucabusby.github.io/FoodSite/",
     },
     {
@@ -21,6 +23,7 @@ const recipes = [
       food: "meat",
       base: "none",
       origin: "France, Europe",
+      imageLink: "https://instakoch.de/wp-content/uploads/2022/09/Boeuf-Bourguignon-050922-5x4-002-scaled.jpg",
       link: "https://lucabusby.github.io/FoodSite/",
     },
     // Add more recipes here
@@ -43,10 +46,14 @@ const recipes = [
   
     const recipeDetails = document.createElement("div");
     recipeDetails.classList.add("recipe-details");
+
+    const recipeImage = document.createElement("img");
+    recipeImage.src = recipe.imageLink;
+    recipeImage.alt = "Recipe Image";
   
     const recipeName = document.createElement("h2");
     recipeName.textContent = recipe.name;
-  
+
     const recipeDifficulty = document.createElement("p");
     recipeDifficulty.textContent = "Difficulty: " + recipe.difficulty;
 
@@ -62,6 +69,7 @@ const recipes = [
     const recipeLink = document.createElement("p");
     recipeLink.textContent = "Link: " + recipe.link;
   
+    recipeDetails.appendChild(recipeImage);
     recipeDetails.appendChild(recipeName);
     recipeDetails.appendChild(recipeDifficulty);
     recipeDetails.appendChild(recipeFood);
@@ -111,9 +119,10 @@ const recipes = [
           createRecipeOverlay(recipe);
         });
   
-        const imagePlaceholder = document.createElement("img");
-        imagePlaceholder.alt = "Recipe Image";
-        recipeCard.appendChild(imagePlaceholder);
+        const recipeImageLink = document.createElement("img");
+        recipeImageLink.alt = "Recipe Image";
+        recipeImageLink.src = recipe.imageLink; 
+        recipeCard.appendChild(recipeImageLink);
   
         const recipeName = document.createElement("h3");
         recipeName.textContent = recipe.name;
