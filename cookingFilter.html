@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>My Cooking Recipes</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <div class="searchbar">
+      <label for="search">Search:</label>
+      <input type="text" id="search" placeholder="Enter recipe name" />
+    </div>
+    <div class="filter">
+      <label for="difficulty">Difficulty:</label>
+      <select id="difficulty">
+        <option value="all">All</option>
+        <option value="easy">Easy</option>
+        <option value="medium">Medium</option>
+        <option value="hard">Hard</option>
+      </select>
+      <label for="food">Food:</label>
+      <select id="food">
+        <option value="all">All</option>
+        <option value="meat">Meat</option>
+        <option value="vegetarian">Vegetarian</option>
+        <option value="vegan">Vegan</option>
+      </select>
+      <label for="base">Base:</label>
+      <select id="base">
+        <option value="all">All</option>
+        <option value="none">None</option>
+        <option value="rice">Rice</option>
+        <option value="bread">Bread</option>
+        <option value="pasta">Pasta</option>
+      </select>
+      <label for="origin">Origin:</label>
+      <input type="text" id="origin" />
+    </div>
+
+    <div class="grid-container" id="recipes-container">
+      <!-- Recipes will be dynamically added here -->
+    </div>
+
+    <script src="scripts.js"></script>
+  </body>
+</html>
