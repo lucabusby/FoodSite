@@ -1,158 +1,14 @@
 const recipes = [
     {
-      name: "Pasta Carbonara",
-      difficulty: "easy",
-      food: "meat",
-      base: "pasta",
-      origin: "Italy, Europe",
-      imageLink: "https://www.bettybossi.ch/rdbimg/bb_apxx030601_0075a/bb_apxx030601_0075a_r01_v005_x0010.jpg",
-      link: "https://lucabusby.github.io/FoodSite/",
-      notes: "this is very",
-    },
-    {
-      name: "Veggie Stir-Fry",
+      name: "Steak Sandwich",
       difficulty: "medium",
-      food: "vegetarian",
-      base: "none",
-      origin: "China, Asia",
-      imageLink: "https://food-images.files.bbci.co.uk/food/recipes/sachas_stir-fry_17077_16x9.jpg",
-      link: "https://lucabusby.github.io/FoodSite/",
-      notes: "",
-    },
-    {
-      name: "Boeuf Bourguignon",
-      difficulty: "hard",
       food: "meat",
-      base: "none",
+      base: "bread",
       origin: "France, Europe",
-      imageLink: "https://instakoch.de/wp-content/uploads/2022/09/Boeuf-Bourguignon-050922-5x4-002-scaled.jpg",
-      link: "https://lucabusby.github.io/FoodSite/",
+      imageLink: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQVrrPX6cWTnAnSlzr2NeOTT42guOS_CY2fCaV5kHvd8h0spiJtCtYgwLU2jpcB8P8RRc0&usqp=CAU",
+      link: "https://www.youtube.com/watch?app=desktop&v=jwu2y9x5OlM&t=5m06s&ab_channel=GordonRamsay",
       notes: "",
     },
-    {
-      name: "Pasta Carbonara",
-      difficulty: "easy",
-      food: "meat",
-      base: "pasta",
-      origin: "Italy, Europe",
-      imageLink: "https://www.bettybossi.ch/rdbimg/bb_apxx030601_0075a/bb_apxx030601_0075a_r01_v005_x0010.jpg",
-      link: "https://lucabusby.github.io/FoodSite/",
-      notes: "this is very",
-    },
-    {
-      name: "Veggie Stir-Fry",
-      difficulty: "medium",
-      food: "vegetarian",
-      base: "none",
-      origin: "China, Asia",
-      imageLink: "https://food-images.files.bbci.co.uk/food/recipes/sachas_stir-fry_17077_16x9.jpg",
-      link: "https://lucabusby.github.io/FoodSite/",
-      notes: "",
-    },
-    {
-      name: "Boeuf Bourguignon",
-      difficulty: "hard",
-      food: "meat",
-      base: "none",
-      origin: "France, Europe",
-      imageLink: "https://instakoch.de/wp-content/uploads/2022/09/Boeuf-Bourguignon-050922-5x4-002-scaled.jpg",
-      link: "https://lucabusby.github.io/FoodSite/",
-      notes: "",
-    },
-    {
-      name: "Pasta Carbonara",
-      difficulty: "easy",
-      food: "meat",
-      base: "pasta",
-      origin: "Italy, Europe",
-      imageLink: "https://www.bettybossi.ch/rdbimg/bb_apxx030601_0075a/bb_apxx030601_0075a_r01_v005_x0010.jpg",
-      link: "https://lucabusby.github.io/FoodSite/",
-      notes: "this is very",
-    },
-    {
-      name: "Veggie Stir-Fry",
-      difficulty: "medium",
-      food: "vegetarian",
-      base: "none",
-      origin: "China, Asia",
-      imageLink: "https://food-images.files.bbci.co.uk/food/recipes/sachas_stir-fry_17077_16x9.jpg",
-      link: "https://lucabusby.github.io/FoodSite/",
-      notes: "",
-    },
-    {
-      name: "Boeuf Bourguignon",
-      difficulty: "hard",
-      food: "meat",
-      base: "none",
-      origin: "France, Europe",
-      imageLink: "https://instakoch.de/wp-content/uploads/2022/09/Boeuf-Bourguignon-050922-5x4-002-scaled.jpg",
-      link: "https://lucabusby.github.io/FoodSite/",
-      notes: "",
-    },
-
-    {
-      name: "Pasta Carbonara",
-      difficulty: "easy",
-      food: "meat",
-      base: "pasta",
-      origin: "Italy, Europe",
-      imageLink: "https://www.bettybossi.ch/rdbimg/bb_apxx030601_0075a/bb_apxx030601_0075a_r01_v005_x0010.jpg",
-      link: "https://lucabusby.github.io/FoodSite/",
-      notes: "this is very",
-    },
-    {
-      name: "Veggie Stir-Fry",
-      difficulty: "medium",
-      food: "vegetarian",
-      base: "none",
-      origin: "China, Asia",
-      imageLink: "https://food-images.files.bbci.co.uk/food/recipes/sachas_stir-fry_17077_16x9.jpg",
-      link: "https://lucabusby.github.io/FoodSite/",
-      notes: "",
-    },
-    {
-      name: "Boeuf Bourguignon",
-      difficulty: "hard",
-      food: "meat",
-      base: "none",
-      origin: "France, Europe",
-      imageLink: "https://instakoch.de/wp-content/uploads/2022/09/Boeuf-Bourguignon-050922-5x4-002-scaled.jpg",
-      link: "https://lucabusby.github.io/FoodSite/",
-      notes: "",
-    },
-
-    {
-      name: "Pasta Carbonara",
-      difficulty: "easy",
-      food: "meat",
-      base: "pasta",
-      origin: "Italy, Europe",
-      imageLink: "https://www.bettybossi.ch/rdbimg/bb_apxx030601_0075a/bb_apxx030601_0075a_r01_v005_x0010.jpg",
-      link: "https://lucabusby.github.io/FoodSite/",
-      notes: "this is very",
-    },
-    {
-      name: "Veggie Stir-Fry",
-      difficulty: "medium",
-      food: "vegetarian",
-      base: "none",
-      origin: "China, Asia",
-      imageLink: "https://food-images.files.bbci.co.uk/food/recipes/sachas_stir-fry_17077_16x9.jpg",
-      link: "https://lucabusby.github.io/FoodSite/",
-      notes: "",
-    },
-    {
-      name: "Boeuf Bourguignon",
-      difficulty: "hard",
-      food: "meat",
-      base: "none",
-      origin: "France, Europe",
-      imageLink: "https://instakoch.de/wp-content/uploads/2022/09/Boeuf-Bourguignon-050922-5x4-002-scaled.jpg",
-      link: "https://lucabusby.github.io/FoodSite/",
-      notes: "",
-    },
-
-
     // Add more recipes here
   ];
   
@@ -269,6 +125,82 @@ const recipes = [
     shuffleArray(recipes);
     displayRecipes();
   }
+
+  //add recipe
+  let addedRecipes = []; // Array to store added recipes
+
+  function showLightbox() {
+    const lightbox = document.getElementById("add-recipe-lightbox");
+    lightbox.style.display = "block";
+  }
+  
+  function hideLightbox() {
+    const lightbox = document.getElementById("add-recipe-lightbox");
+    lightbox.style.display = "none";
+    clearRecipeForm(); // Clear the form when the lightbox is closed
+  }
+  
+  function clearRecipeForm() {
+    const recipeForm = document.getElementById("recipe-form");
+    recipeForm.reset();
+  }
+  
+  function createRecipeObject() {
+    const name = document.getElementById("recipe-name").value;
+    const difficulty = document.getElementById("recipe-difficulty").value;
+    const diet = document.getElementById("recipe-diet").value;
+    const base = document.getElementById("recipe-base").value;
+    const origin = document.getElementById("recipe-origin").value;
+    const notes = document.getElementById("recipe-notes").value;
+  
+    const recipe = {
+      name: name,
+      difficulty: difficulty,
+      food: diet,
+      base: base,
+      origin: origin,
+      notes: notes,
+    };
+  
+    addedRecipes.push(recipe); // Add the new recipe to the addedRecipes array
+    displayAddedRecipes(); // Display the list of added recipes
+    clearRecipeForm(); // Clear the form after adding the recipe
+  }
+  
+  function displayAddedRecipes() {
+    const recipeTextOutput = document.getElementById("recipe-text-output");
+    recipeTextOutput.textContent = addedRecipes
+      .map((recipe) => JSON.stringify(recipe, null, 2))
+      .join(",\n\n"); // Add a comma after each recipe JSON, except the last one
+  }
+
+  function copyToClipboard() {
+    const recipeTextOutput = document.getElementById("recipe-text-output");
+    const recipeText = recipeTextOutput.textContent;
+  
+    const textarea = document.createElement("textarea");
+    textarea.value = recipeText;
+    document.body.appendChild(textarea);
+    textarea.select();
+    document.execCommand("copy");
+    document.body.removeChild(textarea);
+  }
+
+  function clearRecipes() {
+    addedRecipes = [];
+    displayAddedRecipes();
+  }
+  
+  document.getElementById("clear-recipes-btn").addEventListener("click", clearRecipes);
+  document.getElementById("copy-to-clipboard-btn").addEventListener("click", copyToClipboard);
+  document.getElementById("add-recipe-btn").addEventListener("click", showLightbox);
+  document.getElementById("close-lightbox-btn").addEventListener("click", hideLightbox);
+  
+  const recipeForm = document.getElementById("recipe-form");
+  recipeForm.addEventListener("submit", (event) => {
+    event.preventDefault();
+    createRecipeObject();
+  });
 
   document.getElementById("difficulty").addEventListener("change", displayRecipes);
   document.getElementById("food").addEventListener("change", displayRecipes);

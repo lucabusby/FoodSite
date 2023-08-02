@@ -15,18 +15,37 @@ body {
   background: black;
 }
 
+* {
+  box-sizing: border-box;
+}
+
+h3,
+h2,
+h1 {
+  font-weight: 100;
+}
+
+.searchbar {
+  display: grid;
+  grid-template-columns: repeat(6, 1fr);
+  grid-template-rows: 80px;
+  gap: 2vw;
+  margin-bottom: 40px;
+}
+
 .search {
   display: auto;
   width: 100%;
   height: 100px;
-  padding: 0px 50px 0px -50px;
   align-items: center;
+  border-color: black;
   border-width: 2px;
   font-size: 30px;
   font-weight: 100;
   text-indent: 50px;
   margin-bottom: 2vw;
   color: black;
+  grid-column: 1 / 6;
 }
 
 .filter {
@@ -42,6 +61,7 @@ body {
   width: 100%;
   height: 100%;
   padding: 0px;
+  border-color: black;
   border-width: 2px;
   font-size: 1.5vw;
   font-weight: 100;
@@ -57,8 +77,9 @@ body {
 .input {
   display: auto;
   width: 100%;
-  height: 95%;
+  height: 100%;
   padding: 0px;
+  border-color: black;
   border-width: 2px;
   text-indent: 20px;
   font-size: 1.5vw;
@@ -73,6 +94,7 @@ body {
   padding: 0px;
   font-size: 1.5vw;
   font-weight: 100;
+  border-color: black;
   background-color: white;
   text-transform: uppercase;
   grid-column: 6;
@@ -87,14 +109,15 @@ body {
 }
 
 .recipe-card {
-  border-left: 2px solid;
-  border-right: 2px solid;
+  border-color: black;
+  border: 2px solid black;
   padding: 0px;
   text-align: center;
 }
 
 .recipe-card img {
   object-fit: cover;
+  padding: 5%;
   width: 100%;
   height: 18vh;
 }
@@ -136,4 +159,42 @@ body {
   object-fit: cover;
   width: 100%;
   height: 200px;
+}
+
+.lightbox-overlay {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.7);
+  z-index: 999;
+}
+
+.lightbox-content {
+  position: absolute;
+  width: 40vw;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: #fff;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.recipe-text {
+  white-space: pre-wrap;
+  height: 300px;
+  overflow-y: auto;
+  margin-top: 20px;
+  border: 1px solid #ccc;
+  padding: 10px;
+  border-radius: 4px;
+  font-family: monospace;
+}
+
+.input-fields {
+  margin-bottom: 10px;
 }

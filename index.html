@@ -12,8 +12,9 @@
         class="search"
         type="text"
         id="search"
-        placeholder="SEARCH RECIPIE"
+        placeholder="SEARCH RECIPE"
       />
+      <button class="button" id="add-recipe-btn">+ Recipe</button>
     </div>
     <div class="filter">
       <select class="dropdown" id="difficulty">
@@ -34,6 +35,7 @@
         <option value="rice">Rice</option>
         <option value="bread">Bread</option>
         <option value="pasta">Pasta</option>
+        <option value="pasta">Pasta</option>
       </select>
       <input
         class="input"
@@ -47,6 +49,59 @@
     <div class="grid-container" id="recipes-container">
       <!-- Recipes will be dynamically added here -->
     </div>
+
+    <!-- Lightbox overlay -->
+    <div class="lightbox-overlay" id="add-recipe-lightbox">
+      <div class="lightbox-content">
+        <h2>Add Recipe</h2>
+        <form id="recipe-form">
+          <div class="input-fields">
+            <label for="recipe-name">Name:</label>
+            <input type="text" id="recipe-name" required />
+          </div>
+          <div class="input-fields">
+            <label for="recipe-difficulty">Difficulty:</label>
+            <select id="recipe-difficulty" required>
+              <option value="easy">Easy</option>
+              <option value="medium">Medium</option>
+              <option value="hard">Hard</option>
+            </select>
+          </div>
+          <div class="input-fields">
+            <label for="recipe-diet">Diet:</label>
+            <select id="recipe-diet" required>
+              <option value="meat">Meat</option>
+              <option value="vegetarian">Vegetarian</option>
+              <option value="vegan">Vegan</option>
+            </select>
+          </div>
+          <div class="input-fields">
+            <label for="recipe-base">Base:</label>
+            <select id="recipe-base" required>
+              <option value="none">None</option>
+              <option value="rice">Rice</option>
+              <option value="bread">Bread</option>
+              <option value="pasta">Pasta</option>
+              <option value="pasta">Pasta</option>
+            </select>
+          </div>
+          <div class="input-fields">
+            <label for="recipe-origin">Origin:</label>
+            <input type="text" id="recipe-origin" required />
+          </div>
+          <div class="input-fields">
+            <label for="recipe-notes">Notes:</label>
+            <input type="text" id="recipe-notes" />
+          </div>
+          <button type="submit">Add Recipe</button>
+          <button type="button" id="copy-to-clipboard-btn">Copy</button>
+          <button type="button" id="clear-recipes-btn">Clear</button>
+        </form>
+        <div class="recipe-text" id="recipe-text-output"></div>
+        <button id="close-lightbox-btn">Close</button>
+      </div>
+    </div>
+
     <script type="text/javascript" src="./scripts.js"></script>
     <script type="text/javascript" src="./recipes.js"></script>
   </body>
