@@ -192,9 +192,19 @@ h1 {
   border: 1px solid #ccc;
   padding: 10px;
   border-radius: 4px;
+  margin-bottom: 10px;
   font-family: monospace;
 }
 
-.input-fields {
-  margin-bottom: 10px;
+.notes-input {
+  height: 50px;
+}
+
+.form-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  grid-template-rows: auto;
+  gap: 2vw;
+  margin-bottom: 30px;
+  border-radius: 0px;
 }

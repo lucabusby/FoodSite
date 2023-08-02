@@ -151,6 +151,8 @@ const recipes = [
     const diet = document.getElementById("recipe-diet").value;
     const base = document.getElementById("recipe-base").value;
     const origin = document.getElementById("recipe-origin").value;
+    const imageLink = document.getElementById("recipe-imageLink").value;
+    const link = document.getElementById("recipe-link").value;
     const notes = document.getElementById("recipe-notes").value;
   
     const recipe = {
@@ -159,6 +161,8 @@ const recipes = [
       food: diet,
       base: base,
       origin: origin,
+      imageLink: imageLink,
+      link: link,
       notes: notes,
     };
   
