@@ -14,7 +14,7 @@
         id="search"
         placeholder="SEARCH RECIPE"
       />
-      <button class="button" id="add-recipe-btn">+ Recipe</button>
+      <button class="add-button" id="add-recipe-btn">+ Recipe</button>
     </div>
     <div class="filter">
       <select class="dropdown" id="difficulty">
@@ -49,6 +49,8 @@
       <button class="button" id="randomize-btn">Randomize</button>
     </div>
 
+    <div id="recipe-counter">Total Recipes: 0</div>
+
     <div class="grid-container" id="recipes-container">
       <!-- Recipes will be dynamically added here -->
     </div>
@@ -60,7 +62,7 @@
         <form id="recipe-form">
           <div class="form-grid">
             <label for="recipe-name">Name:</label>
-            <input type="text" id="recipe-name" required />
+            <input type="text" id="recipe-name" required autocomplete="off" />
 
             <label for="recipe-difficulty">Difficulty:</label>
             <select id="recipe-difficulty" required>
@@ -87,23 +89,37 @@
               <option value="vegetables">Vegetables</option>
               <option value="other">Other</option>
             </select>
-
             <label for="recipe-origin">Origin:</label>
-            <input
-              type="text"
-              id="recipe-origin"
-              placeholder="Country, Continent"
-              required
-            />
+            <div class="input-container">
+              <input
+                class="recipe-origin-input"
+                type="text"
+                id="recipe-origin"
+                placeholder="Country, Continent"
+                required
+                autocomplete="off"
+              />
+              <ul id="origin-suggestions" class="suggestions"></ul>
+            </div>
 
             <label for="recipe-notes">Notes:</label>
-            <input class="notes-input" type="text" id="recipe-notes" />
+            <input
+              class="notes-input"
+              type="text"
+              id="recipe-notes"
+              autocomplete="off"
+            />
 
             <label for="recipe-imageLink">Image Link:</label>
-            <input type="text" id="recipe-imageLink" required />
+            <input
+              type="text"
+              id="recipe-imageLink"
+              required
+              autocomplete="off"
+            />
 
             <label for="recipe-link">Recipie Link:</label>
-            <input type="text" id="recipe-link" />
+            <input type="text" id="recipe-link" autocomplete="off" />
           </div>
 
           <button type="submit">Add Recipe</button>
