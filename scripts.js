@@ -290,6 +290,11 @@ const recipes = [
     }
   }
 
+  window.onload = function() {
+    shuffleArray(recipes);
+    displayRecipes();
+};
+
   //display iems with filter
   function displayRecipes() {
     const recipesContainer = document.getElementById("recipes-container");
