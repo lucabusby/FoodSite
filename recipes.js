@@ -132,7 +132,7 @@ const recipes = [
     {
       "name": "Homemade Burger",
       "difficulty": "easy",
-      "food": "vegetarian",
+      "food": "meat",
       "base": "bread",
       "origin": "United States, North America",
       "imageLink": "https://market.meridianfarmmarket.ca/wp-content/uploads/2017/03/bigstock-Hamburger-homemade-hamburger-107778380.jpg",
@@ -140,7 +140,7 @@ const recipes = [
       "notes": "Cut onions into rings and cook with patty. Cut tomatoes & salad. When the onions are caramelised take them out. When the patty is nearly done add cheese on top and a splay of water beside. Put the lid on to make the cheese melt. Slightly toast the buns in the same pan. Add sauce to the bunns and all ingrediants."
     },
     {
-      "name": "Homemade Burger",
+      "name": "Homemade Beyond Burger",
       "difficulty": "easy",
       "food": "vegetarian",
       "base": "bread",
@@ -183,7 +183,7 @@ const recipes = [
       "name": "Homemade Sun-Dried Tomato Pesto Pasta",
       "difficulty": "easy",
       "food": "vegetarian",
-      "base": "none",
+      "base": "pasta",
       "origin": "Italy, Europe",
       "imageLink": "https://www.platingsandpairings.com/wp-content/uploads/2020/10/sun-dried-tomato-pesto-18-scaled.jpg",
       "link": "https://www.platingsandpairings.com/sun-dried-tomato-pesto-pesto-rosso/",
@@ -213,7 +213,7 @@ const recipes = [
       "name": "Rice Noodle Salad",
       "difficulty": "medium",
       "food": "vegan",
-      "base": "none",
+      "base": "noodles",
       "origin": "China, Asia",
       "imageLink": "https://www.recipetineats.com/wp-content/uploads/2014/08/Vermicelli-Noodle-Salad_7.jpg?resize=650,910",
       "link": "https://www.recipetineats.com/asian-vermicelli-noodle-salad/",

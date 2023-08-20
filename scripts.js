@@ -1239,6 +1239,23 @@
     }
   });
 
+  //email button
+  function generateEmailBody() {
+    const recipeTextOutput = document.getElementById("recipe-text-output");
+    return encodeURIComponent(recipeTextOutput.textContent);
+  }
+  
+  function sendRecipesByEmail() {
+    const emailBody = generateEmailBody();
+    const emailSubject = encodeURIComponent("Recipes for You");
+    const emailAddress = "lucabusby@bluewin.ch";
+    const mailtoLink = `mailto:${emailAddress}?subject=${emailSubject}&body=${emailBody}`;
+  
+    window.location.href = mailtoLink;
+  }
+  
+  document.getElementById("send-to-email-btn").addEventListener("click", sendRecipesByEmail);
+
   document.getElementById("difficulty").addEventListener("change", displayRecipes);
   document.getElementById("food").addEventListener("change", displayRecipes);
   document.getElementById("base").addEventListener("change", displayRecipes);
