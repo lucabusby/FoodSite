@@ -221,7 +221,7 @@ const recipes = [
     },
     {
       "name": "Tikka Masala",
-      "difficulty": "easy",
+      "difficulty": "medium",
       "food": "meat",
       "base": "none",
       "origin": "India, Asia",
