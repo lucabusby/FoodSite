@@ -165,24 +165,11 @@ h1 {
   }
 
   .dropdown {
-    text-align: center;
     font-family: Helvetica, sans-serif;
     color: black;
   }
-
-  /* .input {
-    font-size: 1.5vw;
-    font-weight: 100;
-    font-family: Helvetica, sans-serif;
-    color: black;
-  } */
 
   .button {
-    font-family: Helvetica, sans-serif;
-    color: black;
-  }
-
-  .add-button {
     font-family: Helvetica, sans-serif;
     color: black;
   }
