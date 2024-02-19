@@ -255,7 +255,7 @@ const recipes = [
       "food": "vegetarian",
       "base": "rice",
       "origin": "Vietnam, Asia",
-      "imageLink": "https://usercontent.one/wp/veggieanh.com/wp-content/uploads/2023/05/Vegan-Summer-Rolls-6.jpg?media=1701510560",
+      "imageLink": "https://www.aheadofthyme.com/wp-content/uploads/2021/07/vietnamese-summer-rolls-with-chicken-2.jpg",
       "link": "https://veggieanh.com/vegan-summer-rolls/",
       "notes": ""
     },
