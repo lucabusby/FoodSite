@@ -164,7 +164,30 @@ h1 {
     cursor: not-allowed;
   }
 
+  .dropdown {
+    font-size: 1.5vw;
+    font-weight: 100;
+    font-family: Helvetica, sans-serif;
+    color: black;
+  }
+
+  .input {
+    font-size: 1.5vw;
+    font-weight: 100;
+    font-family: Helvetica, sans-serif;
+    color: black;
+  }
+
   .button {
+    font-size: 1.5vw;
+    font-weight: 100;
+    font-family: Helvetica, sans-serif;
+    color: black;
+  }
+
+  .add-button {
+    font-size: 1.5vw;
+    font-weight: 100;
     font-family: Helvetica, sans-serif;
     color: black;
   }
