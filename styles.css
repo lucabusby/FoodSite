@@ -151,10 +151,6 @@ h1 {
 
   .button {
     grid-column: span 1;
-    font-size: 1.5vw;
-    font-weight: 100;
-    border-color: green;
-    text-transform: uppercase;
   }
 }
 
@@ -163,12 +159,14 @@ h1 {
     grid-template-columns: repeat(auto-fill, minmax(50%, 1fr));
   }
 
+  .add-button {
+    pointer-events: none;
+    cursor: not-allowed;
+  }
+
   .button {
-    grid-column: span 1;
-    font-size: 1.5vw;
-    font-weight: 100;
-    border-color: green;
-    text-transform: uppercase;
+    font-family: Helvetica, sans-serif;
+    color: black;
   }
 }
 
