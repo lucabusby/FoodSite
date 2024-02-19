@@ -1,135 +1,117 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Cooking</title>
-    <link rel="stylesheet" href="styles.css" />
-  </head>
-  <body>
-    <div class="searchbar">
-      <input
-        class="search"
-        type="text"
-        id="search"
-        placeholder="SEARCH RECIPE"
-      />
-      <button class="add-button" id="add-recipe-btn">+ Recipe</button>
-    </div>
-    <div class="filter">
-      <select class="dropdown" id="difficulty">
-        <option value="all">All Diff.</option>
-        <option value="easy">Easy</option>
-        <option value="medium">Medium</option>
-        <option value="hard">Hard</option>
-      </select>
-      <select class="dropdown" id="food">
-        <option value="all">All Diets</option>
-        <option value="meat">Meat</option>
-        <option value="vegetarian">Vegetarian</option>
-        <option value="vegan">Vegan</option>
-      </select>
-      <select class="dropdown" id="base">
-        <option value="all">All Bases</option>
-        <option value="none">None</option>
-        <option value="bread">Bread</option>
-        <option value="rice">Rice</option>
-        <option value="pasta">Pasta</option>
-        <option value="grains">Grains</option>
-        <option value="noodles">Noodles</option>
-        <option value="vegetables">Vegetables</option>
-        <option value="other">Other</option>
-      </select>
-      <input
-        class="input"
-        type="text"
-        id="origin"
-        placeholder="SEARCH ORIGIN"
-      />
-      <button class="button" id="randomize-btn">Randomize</button>
-    </div>
 
-    <div id="recipe-counter">Total Recipes: 0</div>
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Cooking</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
 
-    <div class="grid-container" id="recipes-container">
-      <!-- Recipes will be dynamically added here -->
-    </div>
+<body>
+  <div class="searchbar">
+    <input class="search" type="text" id="search" placeholder="SEARCH RECIPE" />
+    <button class="add-button" id="add-recipe-btn">+ Recipe</button>
+  </div>
+  <div class="filter">
+    <select class="dropdown" id="difficulty">
+      <option value="all">All Diff.</option>
+      <option value="easy">Easy</option>
+      <option value="medium">Medium</option>
+      <option value="hard">Hard</option>
+    </select>
+    <select class="dropdown" id="food">
+      <option value="all">All Diets</option>
+      <option value="meat">Meat</option>
+      <option value="vegetarian">Vegetarian</option>
+      <option value="vegan">Vegan</option>
+    </select>
+    <select class="dropdown" id="base">
+      <option value="all">All Bases</option>
+      <option value="none">None</option>
+      <option value="bread">Bread</option>
+      <option value="rice">Rice</option>
+      <option value="pasta">Pasta</option>
+      <option value="grains">Grains</option>
+      <option value="noodles">Noodles</option>
+      <option value="vegetables">Vegetables</option>
+      <option value="other">Other</option>
+    </select>
+    <input class="input" type="text" id="origin" placeholder="SEARCH ORIGIN" />
+    <button class="button" id="randomize-btn">Randomize</button>
+  </div>
 
-    <!-- Lightbox overlay -->
-    <div class="lightbox-overlay" id="add-recipe-lightbox">
-      <div class="lightbox-content">
-        <h2>Add Recipe</h2>
-        <form id="recipe-form">
-          <div class="form-grid">
-            <label for="recipe-name">Name:</label>
-            <input type="text" id="recipe-name" required autocomplete="off" />
+  <div id="recipe-counter">Total Recipes: 0</div>
 
-            <label for="recipe-difficulty">Difficulty:</label>
-            <select id="recipe-difficulty" required>
-              <option value="easy">Easy</option>
-              <option value="medium">Medium</option>
-              <option value="hard">Hard</option>
-            </select>
+  <div class="grid-container" id="recipes-container">
+    <!-- Recipes will be dynamically added here -->
+  </div>
 
-            <label for="recipe-diet">Diet:</label>
-            <select id="recipe-diet" required>
-              <option value="meat">Meat</option>
-              <option value="vegetarian">Vegetarian</option>
-              <option value="vegan">Vegan</option>
-            </select>
+  <!-- Lightbox overlay -->
+  <div class="lightbox-overlay" id="add-recipe-lightbox">
+    <div class="lightbox-content">
+      <h2>Add Recipe</h2>
+      <form id="recipe-form">
+        <div class="form-grid">
+          <label for="recipe-name">Name:</label>
+          <input type="text" id="recipe-name" required autocomplete="off" />
 
-            <label for="recipe-base">Base:</label>
-            <select id="recipe-base" required>
-              <option value="none">None</option>
-              <option value="bread">Bread</option>
-              <option value="rice">Rice</option>
-              <option value="pasta">Pasta</option>
-              <option value="grains">Grains</option>
-              <option value="noodles">Noodles</option>
-              <option value="vegetables">Vegetables</option>
-              <option value="other">Other</option>
-            </select>
-            <label for="recipe-origin">Origin:</label>
-            <div class="input-container">
-              <input
-                class="recipe-origin-input"
-                type="text"
-                id="recipe-origin"
-                placeholder="Country, Continent"
-                required
-                autocomplete="off"
-              />
-              <ul id="origin-suggestions" class="suggestions"></ul>
-            </div>
+          <label for="recipe-difficulty">Difficulty:</label>
+          <select id="recipe-difficulty" required>
+            <option value="easy">Easy</option>
+            <option value="medium">Medium</option>
+            <option value="hard">Hard</option>
+          </select>
 
-            <label for="recipe-notes">Notes:</label>
-            <textarea id="recipe-notes" rows="6"></textarea>
+          <label for="recipe-diet">Diet:</label>
+          <select id="recipe-diet" required>
+            <option value="meat">Meat</option>
+            <option value="vegetarian">Vegetarian</option>
+            <option value="vegan">Vegan</option>
+          </select>
 
-            <label for="recipe-imageLink">Image Link:</label>
-            <input
-              type="text"
-              id="recipe-imageLink"
-              required
-              autocomplete="off"
+          <label for="recipe-base">Base:</label>
+          <select id="recipe-base" required>
+            <option value="none">None</option>
+            <option value="bread">Bread</option>
+            <option value="rice">Rice</option>
+            <option value="pasta">Pasta</option>
+            <option value="grains">Grains</option>
+            <option value="noodles">Noodles</option>
+            <option value="vegetables">Vegetables</option>
+            <option value="other">Other</option>
+          </select>
+          <label for="recipe-origin">Origin:</label>
+          <div class="input-container">
+            <input class="recipe-origin-input" type="text" id="recipe-origin" placeholder="Country, Continent" required autocomplete="off"
             />
-
-            <label for="recipe-link">Recipie Link:</label>
-            <input type="text" id="recipe-link" autocomplete="off" />
+            <ul id="origin-suggestions" class="suggestions"></ul>
           </div>
 
-          <button type="submit">Add Recipe</button>
-          <button type="button" id="copy-to-clipboard-btn">Copy</button>
-          <button type="button" id="clear-recipes-btn">Clear</button>
-          <button type="button" id="send-to-email-btn">
-            Send Recipes via Email
-          </button>
-        </form>
-        <div class="recipe-text" id="recipe-text-output"></div>
-        <button id="close-lightbox-btn">Close</button>
-      </div>
-    </div>
+          <label for="recipe-notes">Notes:</label>
+          <textarea id="recipe-notes" rows="6"></textarea>
 
-    <script type="text/javascript" src="./recipes.js"></script>
-    <script type="text/javascript" src="./scripts.js"></script>
-  </body>
+          <label for="recipe-imageLink">Image Link:</label>
+          <input type="text" id="recipe-imageLink" required autocomplete="off" />
+
+          <label for="recipe-link">Recipie Link:</label>
+          <input type="text" id="recipe-link" autocomplete="off" />
+        </div>
+
+        <button type="submit">Add Recipe</button>
+        <button type="button" id="copy-to-clipboard-btn">Copy</button>
+        <button type="button" id="clear-recipes-btn">Clear</button>
+        <button type="button" id="send-to-email-btn">
+          Send Recipes via Email
+        </button>
+      </form>
+      <div class="recipe-text" id="recipe-text-output"></div>
+      <button id="close-lightbox-btn">Close</button>
+    </div>
+  </div>
+
+  <script type="text/javascript" src="./recipes.js"></script>
+  <script type="text/javascript" src="./scripts.js"></script>
+</body>
+
 </html>
