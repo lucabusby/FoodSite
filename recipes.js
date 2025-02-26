@@ -44,7 +44,7 @@ const recipes = [
     "difficulty": "easy",
     "food": "vegetarian",
     "base": "grains",
-    "origin": "Lebanon Africa",
+    "origin": "Lebanon, Africa",
     "imageLink": "https://klaraslife.com/wp-content/uploads/2019/01/taboulehDSC09023.jpg",
     "link": "",
     "notes": "Couscous\n\nMix with cucumber, cherry tomatoes, paprika, peppermint, raisins, feta cheese, pomegranate &/ figs"
@@ -120,22 +120,12 @@ const recipes = [
       "notes": ""
     },
     {
-      "name": "Homemade Burger",
+      "name": "Burger",
       "difficulty": "easy",
       "food": "meat",
       "base": "bread",
       "origin": "United States, North America",
       "imageLink": "https://market.meridianfarmmarket.ca/wp-content/uploads/2017/03/bigstock-Hamburger-homemade-hamburger-107778380.jpg",
-      "link": "",
-      "notes": "Cut onions into rings and cook with patty. Cut tomatoes & salad. When the onions are caramelised take them out. When the patty is nearly done add cheese on top and a splay of water beside. Put the lid on to make the cheese melt. Slightly toast the buns in the same pan. Add sauce to the bunns and all ingrediants."
-    },
-    {
-      "name": "Homemade Beyond Burger",
-      "difficulty": "easy",
-      "food": "vegetarian",
-      "base": "bread",
-      "origin": "United States, North America",
-      "imageLink": "https://www.malteskitchen.de/wp-content/uploads/2019/06/beyond-meat-burger-7024.jpg",
       "link": "",
       "notes": "Cut onions into rings and cook with patty. Cut tomatoes & salad. When the onions are caramelised take them out. When the patty is nearly done add cheese on top and a splay of water beside. Put the lid on to make the cheese melt. Slightly toast the buns in the same pan. Add sauce to the bunns and all ingrediants."
     },
@@ -216,7 +206,7 @@ const recipes = [
       "base": "rice",
       "origin": "Thailand, Asia",
       "imageLink": "https://eadn-wc05-5516459.nxedge.io/wp-content/uploads/2022/10/Thai-Red-Curry-by-Raya-70-Full-plate-square.jpg",
-      "link": "https://www.thaicookbook.tv/thai-recipes/main-dishes/red-curry-with-bamboo-shoots-chicken-and-coconut/",
+      "link": "https://thewoksoflife.com/wp-content/uploads/2023/04/thai-red-curry-chicken-9.jpg",
       "notes": ""
     },
     {

@@ -1,1245 +1,394 @@
-  //overlay add for recipe
-  function createRecipeOverlay(recipe) {
-    const overlay = document.createElement("div");
-    overlay.classList.add("overlay");
-  
-    const content = document.createElement("div");
-    content.classList.add("overlay-content");
-  
-    const closeBtn = document.createElement("span");
-    closeBtn.textContent = "×";
-    closeBtn.classList.add("close-btn");
-    closeBtn.addEventListener("click", () => {
-      overlay.remove();
-    });
-  
-    const recipeDetails = document.createElement("div");
-    recipeDetails.classList.add("recipe-details");
+/*------------------------------------------------------------------------------
+  LIGHTBOX FUNCTIONS (ADD RECIPE)
+------------------------------------------------------------------------------*/
+// --- Add Recipe Lightbox Functions --- 
 
-    const recipeImage = document.createElement("img");
-    recipeImage.src = recipe.imageLink;
-    recipeImage.alt = "Recipe Image";
-  
-    const recipeName = document.createElement("h2");
-    recipeName.textContent = recipe.name;
-
-    const recipeDifficulty = document.createElement("p");
-    recipeDifficulty.textContent = "Difficulty: " + recipe.difficulty;
-
-    const recipeFood = document.createElement("p");
-    recipeFood.textContent = "Food: " + recipe.food;
-
-    const recipeBase = document.createElement("p");
-    recipeBase.textContent = "Base: " + recipe.base;
-  
-    const recipeOrigin = document.createElement("p");
-    recipeOrigin.textContent = "Origin: " + recipe.origin;
-
-    const recipeLink = document.createElement("p");
-    const linkElement = document.createElement("a");
-
-    if (recipe.link) {
-        linkElement.href = recipe.link;
-        linkElement.textContent = "Click for Recipe";
-        linkElement.target = "_blank";
-        
-        recipeLink.appendChild(linkElement);
-    };
-
-    const recipeNotes = document.createElement("p");
-    recipeNotes.textContent = "Notes:\n\n" + recipe.notes;
-  
-    recipeDetails.appendChild(recipeImage);
-    recipeDetails.appendChild(recipeName);
-    recipeDetails.appendChild(recipeDifficulty);
-    recipeDetails.appendChild(recipeFood);
-    recipeDetails.appendChild(recipeBase);
-    recipeDetails.appendChild(recipeOrigin);
-    recipeDetails.appendChild(recipeLink);
-    recipeDetails.appendChild(recipeNotes);
-  
-    content.appendChild(closeBtn);
-    content.appendChild(recipeDetails);
-    overlay.appendChild(content);
-  
-    document.body.appendChild(overlay);
-  }
-
-  //random order
-  function shuffleArray(array) {
-    // Fisher-Yates (aka Knuth) Shuffle Algorithm
-    for (let i = array.length - 1; i > 0; i--) {
-      const j = Math.floor(Math.random() * (i + 1));
-      [array[i], array[j]] = [array[j], array[i]];
-    }
-  }
-
-  window.onload = function() {
-    shuffleArray(recipes);
-    displayRecipes();
-};
-
-  //display iems with filter
-  function displayRecipes() {
-    const recipesContainer = document.getElementById("recipes-container");
-    recipesContainer.innerHTML = "";
-  
-    const difficultyFilter = document.getElementById("difficulty").value;
-    const foodFilter = document.getElementById("food").value;
-    const baseFilter = document.getElementById("base").value;
-    const originFilter = document.getElementById("origin").value.toLowerCase();
-    const searchFilter = document.getElementById("search").value.toLowerCase();
-  
-    recipes.forEach((recipe) => {
-      if (
-        (difficultyFilter === "all" || recipe.difficulty === difficultyFilter) &&
-        (foodFilter === "all" || recipe.food === foodFilter) &&
-        (baseFilter === "all" || recipe.base === baseFilter) &&
-        (!originFilter || recipe.origin.toLowerCase().includes(originFilter)) &&
-        (!searchFilter || recipe.name.toLowerCase().includes(searchFilter))
-      ) {
-        
-        const recipeCard = document.createElement("div");
-        recipeCard.classList.add("recipe-card");
-        recipeCard.addEventListener("click", () => {
-          createRecipeOverlay(recipe);
-        });
-  
-        const recipeImageLink = document.createElement("img");
-        recipeImageLink.alt = "Recipe Image";
-        recipeImageLink.src = recipe.imageLink; 
-        recipeCard.appendChild(recipeImageLink);
-  
-        const recipeName = document.createElement("h3");
-        recipeName.textContent = recipe.name;
-        recipeCard.appendChild(recipeName);
-  
-        recipesContainer.appendChild(recipeCard);
-      }
-    });
-  }
-
-  //avoid spam overload
-  function onRandomizeButtonClick() {
-    shuffleArray(recipes);
-    displayRecipes();
-  }
-
-  //add recipe
-  let addedRecipes = []; // Array to store added recipes
-
-  function showLightbox() {
+/**
+ * Shows the "Add Recipe" lightbox and sets up an Esc key listener.
+ */
+function showLightbox() {
     const lightbox = document.getElementById("add-recipe-lightbox");
-    lightbox.style.display = "block";
+    lightbox.style.display = "flex";
+    document.addEventListener("keydown", addRecipeLightboxEscHandler);
   }
   
+  /**
+   * Hides the "Add Recipe" lightbox, removes its Esc key listener, and resets the form.
+   */
   function hideLightbox() {
     const lightbox = document.getElementById("add-recipe-lightbox");
     lightbox.style.display = "none";
-    clearRecipeForm(); // Clear the form when the lightbox is closed
+    document.removeEventListener("keydown", addRecipeLightboxEscHandler);
+    clearRecipeForm();
   }
   
+  /**
+   * Handler for closing the add recipe lightbox when the Escape key is pressed.
+   */
+  function addRecipeLightboxEscHandler(e) {
+    if (e.key === "Escape") {
+      hideLightbox();
+    }
+  }
+  
+  // --- Event Listener for Clicking Outside the Lightbox Content --- 
+  document
+    .getElementById("add-recipe-lightbox")
+    .addEventListener("click", function (e) {
+      // If the user clicks directly on the overlay (not its inner content), close the lightbox.
+      if (e.target === this) {
+        hideLightbox();
+      }
+    });
+  
+  /**
+   * Reset the recipe form inputs.
+   */
   function clearRecipeForm() {
-    const recipeForm = document.getElementById("recipe-form");
-    recipeForm.reset();
+    document.getElementById("recipe-form").reset();
   }
   
-  function createRecipeObject() {
-    const name = document.getElementById("recipe-name").value;
-    const difficulty = document.getElementById("recipe-difficulty").value;
-    const diet = document.getElementById("recipe-diet").value;
-    const base = document.getElementById("recipe-base").value;
-    const origin = document.getElementById("recipe-origin").value;
-    const imageLink = document.getElementById("recipe-imageLink").value;
-    const link = document.getElementById("recipe-link").value;
-    const notes = document.getElementById("recipe-notes").value;
+  /*------------------------------------------------------------------------------
+    FILTER FUNCTIONS
+  ------------------------------------------------------------------------------*/
+  /**
+   * Update applied filter pills based on current filter values.
+   */
+  function updateAppliedFilters() {
+    const appliedContainer = document.getElementById("applied-filters");
+    appliedContainer.innerHTML = ""; // Clear previous pills
   
+    const difficulty = document.getElementById("difficulty").value.toLowerCase();
+    const base = document.getElementById("base").value.toLowerCase();
+    const origin = document.getElementById("origin").value.trim();
+  
+    if (difficulty !== "all") {
+      appliedContainer.appendChild(createFilterPill("Difficulty", difficulty));
+    }
+    if (base !== "all") {
+      appliedContainer.appendChild(createFilterPill("Base", base));
+    }
+    if (origin !== "") {
+      appliedContainer.appendChild(createFilterPill("Origin", origin));
+    }
+  }
+  
+  /**
+   * Create a filter pill element.
+   * @param {string} label - Filter name.
+   * @param {string} value - Filter value.
+   * @returns {HTMLElement} - The filter pill element.
+   */
+  function createFilterPill(label, value) {
+    const pill = document.createElement("div");
+    pill.classList.add("filter-pill");
+    pill.textContent = `${label}: ${value}`;
+  
+    const removeBtn = document.createElement("span");
+    removeBtn.classList.add("filter-pill-remove");
+    removeBtn.textContent = "×";
+    removeBtn.dataset.filterKey = label.toLowerCase();
+  
+    removeBtn.addEventListener("click", (e) => {
+      e.stopPropagation();
+      removeFilter(removeBtn.dataset.filterKey);
+    });
+  
+    pill.appendChild(removeBtn);
+    return pill;
+  }
+  
+  /**
+   * Remove a filter by resetting its corresponding control.
+   * @param {string} filterKey - The filter to remove.
+   */
+  function removeFilter(filterKey) {
+    if (filterKey === "difficulty") {
+      document.getElementById("difficulty").value = "all";
+    } else if (filterKey === "base") {
+      document.getElementById("base").value = "all";
+    } else if (filterKey === "origin") {
+      document.getElementById("origin").value = "";
+    }
+    updateAppliedFilters();
+    displayRecipes();
+  }
+  
+  /*------------------------------------------------------------------------------
+    ADD RECIPE FUNCTIONS
+  ------------------------------------------------------------------------------*/
+  // Array to store recipes added via the form.
+  let addedRecipes = [];
+  
+  /**
+   * Create a new recipe object from the form and update the list.
+   */
+  function createRecipeObject() {
     const recipe = {
-      name: name,
-      difficulty: difficulty,
-      food: diet,
-      base: base,
-      origin: origin,
-      imageLink: imageLink,
-      link: link,
-      notes: notes,
+      name: document.getElementById("recipe-name").value,
+      difficulty: document.getElementById("recipe-difficulty").value,
+      base: document.getElementById("recipe-base").value,
+      origin: document.getElementById("recipe-origin").value,
+      imageLink: document.getElementById("recipe-imageLink").value,
+      link: document.getElementById("recipe-link").value,
+      notes: document.getElementById("recipe-notes").value,
     };
   
-    addedRecipes.push(recipe); // Add the new recipe to the addedRecipes array
-    displayAddedRecipes(); // Display the list of added recipes
-    clearRecipeForm(); // Clear the form after adding the recipe
+    addedRecipes.push(recipe);
+    displayAddedRecipes();
+    clearRecipeForm();
   }
   
+  /**
+   * Display the added recipes as formatted JSON.
+   */
   function displayAddedRecipes() {
-    const recipeTextOutput = document.getElementById("recipe-text-output");
-    recipeTextOutput.textContent = addedRecipes
+    const output = document.getElementById("recipe-text-output");
+    output.textContent = addedRecipes
       .map((recipe) => JSON.stringify(recipe, null, 2))
-      .join(",\n"); // Add a comma after each recipe JSON, except the last one
+      .join(",\n");
   }
-
-  function copyToClipboard() {
-    const recipeTextOutput = document.getElementById("recipe-text-output");
-    const recipeText = recipeTextOutput.textContent;
   
+  /**
+   * Copy the added recipes JSON to the clipboard.
+   */
+  function copyToClipboard() {
+    const output = document.getElementById("recipe-text-output").textContent;
     const textarea = document.createElement("textarea");
-    textarea.value = recipeText;
+    textarea.value = output;
     document.body.appendChild(textarea);
     textarea.select();
     document.execCommand("copy");
     document.body.removeChild(textarea);
   }
-
+  
+  /**
+   * Clear all added recipes.
+   */
   function clearRecipes() {
     addedRecipes = [];
     displayAddedRecipes();
   }
-
-  //counts the total number of recipes
-  function recipeCounter() {
-    const recipeCounter = document.getElementById("recipe-counter");
-    recipeCounter.textContent = "Total Recipes: " + recipes.length;
-  }
-  recipeCounter();
   
-  document.getElementById("clear-recipes-btn").addEventListener("click", clearRecipes);
-  document.getElementById("copy-to-clipboard-btn").addEventListener("click", copyToClipboard);
-  document.getElementById("add-recipe-btn").addEventListener("click", showLightbox);
-  document.getElementById("close-lightbox-btn").addEventListener("click", hideLightbox);
+  /*------------------------------------------------------------------------------
+    RECIPE OVERLAY & DISPLAY FUNCTIONS
+  ------------------------------------------------------------------------------*/
+  /**
+   * Create an overlay to display full recipe details.
+   * @param {Object} recipe - The recipe object.
+   */
+  function createRecipeOverlay(recipe) {
+    const overlay = document.createElement("div");
+    overlay.classList.add("overlay");
   
-  const recipeForm = document.getElementById("recipe-form");
-  recipeForm.addEventListener("submit", (event) => {
-    event.preventDefault();
-    createRecipeObject();
-  });
-
-  //all countries & continents
-  const countriesData = [
-      {
-          name: "Afghanistan",
-          continent: "Asia"
-      },
-      {
-          name: "Albania",
-          continent: "Europe"
-      },
-      {
-          name: "Algeria",
-          continent: "Africa"
-      },
-      {
-          name: "American Samoa",
-          continent: "Oceania"
-      },
-      {
-          name: "Andorra",
-          continent: "Europe"
-      },
-      {
-          name: "Angola",
-          continent: "Africa"
-      },
-      {
-          name: "Anguilla",
-          continent: "North America"
-      },
-      {
-          name: "Antarctica",
-          continent: "Antarctica"
-      },
-      {
-          name: "Antigua and Barbuda",
-          continent: "North America"
-      },
-      {
-          name: "Argentina",
-          continent: "South America"
-      },
-      {
-          name: "Armenia",
-          continent: "Asia"
-      },
-      {
-          name: "Aruba",
-          continent: "North America"
-      },
-      {
-          name: "Australia",
-          continent: "Oceania"
-      },
-      {
-          name: "Austria",
-          continent: "Europe"
-      },
-      {
-          name: "Azerbaijan",
-          continent: "Asia"
-      },
-      {
-          name: "Bahamas",
-          continent: "North America"
-      },
-      {
-          name: "Bahrain",
-          continent: "Asia"
-      },
-      {
-          name: "Bangladesh",
-          continent: "Asia"
-      },
-      {
-          name: "Barbados",
-          continent: "North America"
-      },
-      {
-          name: "Belarus",
-          continent: "Europe"
-      },
-      {
-          name: "Belgium",
-          continent: "Europe"
-      },
-      {
-          name: "Belize",
-          continent: "North America"
-      },
-      {
-          name: "Benin",
-          continent: "Africa"
-      },
-      {
-          name: "Bermuda",
-          continent: "North America"
-      },
-      {
-          name: "Bhutan",
-          continent: "Asia"
-      },
-      {
-          name: "Bolivia",
-          continent: "South America"
-      },
-      {
-          name: "Bosnia and Herzegovina",
-          continent: "Europe"
-      },
-      {
-          name: "Botswana",
-          continent: "Africa"
-      },
-      {
-          name: "Bouvet Island",
-          continent: "Antarctica"
-      },
-      {
-          name: "Brazil",
-          continent: "South America"
-      },
-      {
-          name: "British Indian Ocean Territory",
-          continent: "Africa"
-      },
-      {
-          name: "Brunei",
-          continent: "Asia"
-      },
-      {
-          name: "Bulgaria",
-          continent: "Europe"
-      },
-      {
-          name: "Burkina Faso",
-          continent: "Africa"
-      },
-      {
-          name: "Burundi",
-          continent: "Africa"
-      },
-      {
-          name: "Cambodia",
-          continent: "Asia"
-      },
-      {
-          name: "Cameroon",
-          continent: "Africa"
-      },
-      {
-          name: "Canada",
-          continent: "North America"
-      },
-      {
-          name: "Cape Verde",
-          continent: "Africa"
-      },
-      {
-          name: "Cayman Islands",
-          continent: "North America"
-      },
-      {
-          name: "Central African Republic",
-          continent: "Africa"
-      },
-      {
-          name: "Chad",
-          continent: "Africa"
-      },
-      {
-          name: "Chile",
-          continent: "South America"
-      },
-      {
-          name: "China",
-          continent: "Asia"
-      },
-      {
-          name: "Christmas Island",
-          continent: "Oceania"
-      },
-      {
-          name: "Cocos (Keeling) Islands",
-          continent: "Oceania"
-      },
-      {
-          name: "Colombia",
-          continent: "South America"
-      },
-      {
-          name: "Comoros",
-          continent: "Africa"
-      },
-      {
-          name: "Congo",
-          continent: "Africa"
-      },
-      {
-          name: "Cook Islands",
-          continent: "Oceania"
-      },
-      {
-          name: "Costa Rica",
-          continent: "North America"
-      },
-      {
-          name: "Croatia",
-          continent: "Europe"
-      },
-      {
-          name: "Cuba",
-          continent: "North America"
-      },
-      {
-          name: "Cyprus",
-          continent: "Asia"
-      },
-      {
-          name: "Czech Republic",
-          continent: "Europe"
-      },
-      {
-          name: "Denmark",
-          continent: "Europe"
-      },
-      {
-          name: "Djibouti",
-          continent: "Africa"
-      },
-      {
-          name: "Dominica",
-          continent: "North America"
-      },
-      {
-          name: "Dominican Republic",
-          continent: "North America"
-      },
-      {
-          name: "East Timor",
-          continent: "Asia"
-      },
-      {
-          name: "Ecuador",
-          continent: "South America"
-      },
-      {
-          name: "Egypt",
-          continent: "Africa"
-      },
-      {
-          name: "El Salvador",
-          continent: "North America"
-      },
-      {
-          name: "England",
-          continent: "Europe"
-      },
-      {
-          name: "Equatorial Guinea",
-          continent: "Africa"
-      },
-      {
-          name: "Eritrea",
-          continent: "Africa"
-      },
-      {
-          name: "Estonia",
-          continent: "Europe"
-      },
-      {
-          name: "Ethiopia",
-          continent: "Africa"
-      },
-      {
-          name: "Falkland Islands",
-          continent: "South America"
-      },
-      {
-          name: "Faroe Islands",
-          continent: "Europe"
-      },
-      {
-          name: "Fiji Islands",
-          continent: "Oceania"
-      },
-      {
-          name: "Finland",
-          continent: "Europe"
-      },
-      {
-          name: "France",
-          continent: "Europe"
-      },
-      {
-          name: "French Guiana",
-          continent: "South America"
-      },
-      {
-          name: "French Polynesia",
-          continent: "Oceania"
-      },
-      {
-          name: "French Southern territories",
-          continent: "Antarctica"
-      },
-      {
-          name: "Gabon",
-          continent: "Africa"
-      },
-      {
-          name: "Gambia",
-          continent: "Africa"
-      },
-      {
-          name: "Georgia",
-          continent: "Asia"
-      },
-      {
-          name: "Germany",
-          continent: "Europe"
-      },
-      {
-          name: "Ghana",
-          continent: "Africa"
-      },
-      {
-          name: "Gibraltar",
-          continent: "Europe"
-      },
-      {
-          name: "Greece",
-          continent: "Europe"
-      },
-      {
-          name: "Greenland",
-          continent: "North America"
-      },
-      {
-          name: "Grenada",
-          continent: "North America"
-      },
-      {
-          name: "Guadeloupe",
-          continent: "North America"
-      },
-      {
-          name: "Guam",
-          continent: "Oceania"
-      },
-      {
-          name: "Guatemala",
-          continent: "North America"
-      },
-      {
-          name: "Guinea",
-          continent: "Africa"
-      },
-      {
-          name: "Guinea-Bissau",
-          continent: "Africa"
-      },
-      {
-          name: "Guyana",
-          continent: "South America"
-      },
-      {
-          name: "Haiti",
-          continent: "North America"
-      },
-      {
-          name: "Heard Island and McDonald Islands",
-          continent: "Antarctica"
-      },
-      {
-          name: "Holy See (Vatican City State)",
-          continent: "Europe"
-      },
-      {
-          name: "Honduras",
-          continent: "North America"
-      },
-      {
-          name: "Hong Kong",
-          continent: "Asia"
-      },
-      {
-          name: "Hungary",
-          continent: "Europe"
-      },
-      {
-          name: "Iceland",
-          continent: "Europe"
-      },
-      {
-          name: "India",
-          continent: "Asia"
-      },
-      {
-          name: "Indonesia",
-          continent: "Asia"
-      },
-      {
-          name: "Iran",
-          continent: "Asia"
-      },
-      {
-          name: "Iraq",
-          continent: "Asia"
-      },
-      {
-          name: "Ireland",
-          continent: "Europe"
-      },
-      {
-          name: "Israel",
-          continent: "Asia"
-      },
-      {
-          name: "Italy",
-          continent: "Europe"
-      },
-      {
-          name: "Ivory Coast",
-          continent: "Africa"
-      },
-      {
-          name: "Jamaica",
-          continent: "North America"
-      },
-      {
-          name: "Japan",
-          continent: "Asia"
-      },
-      {
-          name: "Jordan",
-          continent: "Asia"
-      },
-      {
-          name: "Kazakhstan",
-          continent: "Asia"
-      },
-      {
-          name: "Kenya",
-          continent: "Africa"
-      },
-      {
-          name: "Kiribati",
-          continent: "Oceania"
-      },
-      {
-          name: "Kuwait",
-          continent: "Asia"
-      },
-      {
-          name: "Kyrgyzstan",
-          continent: "Asia"
-      },
-      {
-          name: "Laos",
-          continent: "Asia"
-      },
-      {
-          name: "Latvia",
-          continent: "Europe"
-      },
-      {
-          name: "Lebanon",
-          continent: "Asia"
-      },
-      {
-          name: "Lesotho",
-          continent: "Africa"
-      },
-      {
-          name: "Liberia",
-          continent: "Africa"
-      },
-      {
-          name: "Libyan Arab Jamahiriya",
-          continent: "Africa"
-      },
-      {
-          name: "Liechtenstein",
-          continent: "Europe"
-      },
-      {
-          name: "Lithuania",
-          continent: "Europe"
-      },
-      {
-          name: "Luxembourg",
-          continent: "Europe"
-      },
-      {
-          name: "Macao",
-          continent: "Asia"
-      },
-      {
-          name: "North Macedonia",
-          continent: "Europe"
-      },
-      {
-          name: "Madagascar",
-          continent: "Africa"
-      },
-      {
-          name: "Malawi",
-          continent: "Africa"
-      },
-      {
-          name: "Malaysia",
-          continent: "Asia"
-      },
-      {
-          name: "Maldives",
-          continent: "Asia"
-      },
-      {
-          name: "Mali",
-          continent: "Africa"
-      },
-      {
-          name: "Malta",
-          continent: "Europe"
-      },
-      {
-          name: "Marshall Islands",
-          continent: "Oceania"
-      },
-      {
-          name: "Martinique",
-          continent: "North America"
-      },
-      {
-          name: "Mauritania",
-          continent: "Africa"
-      },
-      {
-          name: "Mauritius",
-          continent: "Africa"
-      },
-      {
-          name: "Mayotte",
-          continent: "Africa"
-      },
-      {
-          name: "Mexico",
-          continent: "North America"
-      },
-      {
-          name: "Micronesia, Federated States of",
-          continent: "Oceania"
-      },
-      {
-          name: "Moldova",
-          continent: "Europe"
-      },
-      {
-          name: "Monaco",
-          continent: "Europe"
-      },
-      {
-          name: "Mongolia",
-          continent: "Asia"
-      },
-      {
-          name: "Montenegro",
-          continent: "Europe"
-      },
-      {
-          name: "Montserrat",
-          continent: "North America"
-      },
-      {
-          name: "Morocco",
-          continent: "Africa"
-      },
-      {
-          name: "Mozambique",
-          continent: "Africa"
-      },
-      {
-          name: "Myanmar",
-          continent: "Asia"
-      },
-      {
-          name: "Namibia",
-          continent: "Africa"
-      },
-      {
-          name: "Nauru",
-          continent: "Oceania"
-      },
-      {
-          name: "Nepal",
-          continent: "Asia"
-      },
-      {
-          name: "Netherlands",
-          continent: "Europe"
-      },
-      {
-          name: "Netherlands Antilles",
-          continent: "North America"
-      },
-      {
-          name: "New Caledonia",
-          continent: "Oceania"
-      },
-      {
-          name: "New Zealand",
-          continent: "Oceania"
-      },
-      {
-          name: "Nicaragua",
-          continent: "North America"
-      },
-      {
-          name: "Niger",
-          continent: "Africa"
-      },
-      {
-          name: "Nigeria",
-          continent: "Africa"
-      },
-      {
-          name: "Niue",
-          continent: "Oceania"
-      },
-      {
-          name: "Norfolk Island",
-          continent: "Oceania"
-      },
-      {
-          name: "North Korea",
-          continent: "Asia"
-      },
-      {
-          name: "Northern Ireland",
-          continent: "Europe"
-      },
-      {
-          name: "Northern Mariana Islands",
-          continent: "Oceania"
-      },
-      {
-          name: "Norway",
-          continent: "Europe"
-      },
-      {
-          name: "Oman",
-          continent: "Asia"
-      },
-      {
-          name: "Pakistan",
-          continent: "Asia"
-      },
-      {
-          name: "Palau",
-          continent: "Oceania"
-      },
-      {
-          name: "Palestine",
-          continent: "Asia"
-      },
-      {
-          name: "Panama",
-          continent: "North America"
-      },
-      {
-          name: "Papua New Guinea",
-          continent: "Oceania"
-      },
-      {
-          name: "Paraguay",
-          continent: "South America"
-      },
-      {
-          name: "Peru",
-          continent: "South America"
-      },
-      {
-          name: "Philippines",
-          continent: "Asia"
-      },
-      {
-          name: "Pitcairn",
-          continent: "Oceania"
-      },
-      {
-          name: "Poland",
-          continent: "Europe"
-      },
-      {
-          name: "Portugal",
-          continent: "Europe"
-      },
-      {
-          name: "Puerto Rico",
-          continent: "North America"
-      },
-      {
-          name: "Qatar",
-          continent: "Asia"
-      },
-      {
-          name: "Reunion",
-          continent: "Africa"
-      },
-      {
-          name: "Romania",
-          continent: "Europe"
-      },
-      {
-          name: "Russian Federation",
-          continent: "Europe"
-      },
-      {
-          name: "Rwanda",
-          continent: "Africa"
-      },
-      {
-          name: "Saint Helena",
-          continent: "Africa"
-      },
-      {
-          name: "Saint Kitts and Nevis",
-          continent: "North America"
-      },
-      {
-          name: "Saint Lucia",
-          continent: "North America"
-      },
-      {
-          name: "Saint Pierre and Miquelon",
-          continent: "North America"
-      },
-      {
-          name: "Saint Vincent and the Grenadines",
-          continent: "North America"
-      },
-      {
-          name: "Samoa",
-          continent: "Oceania"
-      },
-      {
-          name: "San Marino",
-          continent: "Europe"
-      },
-      {
-          name: "Sao Tome and Principe",
-          continent: "Africa"
-      },
-      {
-          name: "Saudi Arabia",
-          continent: "Asia"
-      },
-      {
-          name: "Scotland",
-          continent: "Europe"
-      },
-      {
-          name: "Senegal",
-          continent: "Africa"
-      },
-      {
-          name: "Serbia",
-          continent: "Europe"
-      },
-      {
-          name: "Seychelles",
-          continent: "Africa"
-      },
-      {
-          name: "Sierra Leone",
-          continent: "Africa"
-      },
-      {
-          name: "Singapore",
-          continent: "Asia"
-      },
-      {
-          name: "Slovakia",
-          continent: "Europe"
-      },
-      {
-          name: "Slovenia",
-          continent: "Europe"
-      },
-      {
-          name: "Solomon Islands",
-          continent: "Oceania"
-      },
-      {
-          name: "Somalia",
-          continent: "Africa"
-      },
-      {
-          name: "South Africa",
-          continent: "Africa"
-      },
-      {
-          name: "South Georgia and the South Sandwich Islands",
-          continent: "Antarctica"
-      },
-      {
-          name: "South Korea",
-          continent: "Asia"
-      },
-      {
-          name: "South Sudan",
-          continent: "Africa"
-      },
-      {
-          name: "Spain",
-          continent: "Europe"
-      },
-      {
-          name: "Sri Lanka",
-          continent: "Asia"
-      },
-      {
-          name: "Sudan",
-          continent: "Africa"
-      },
-      {
-          name: "Suriname",
-          continent: "South America"
-      },
-      {
-          name: "Svalbard and Jan Mayen",
-          continent: "Europe"
-      },
-      {
-          name: "Swaziland",
-          continent: "Africa"
-      },
-      {
-          name: "Sweden",
-          continent: "Europe"
-      },
-      {
-          name: "Switzerland",
-          continent: "Europe"
-      },
-      {
-          name: "Syria",
-          continent: "Asia"
-      },
-      {
-          name: "Tajikistan",
-          continent: "Asia"
-      },
-      {
-          name: "Tanzania",
-          continent: "Africa"
-      },
-      {
-          name: "Thailand",
-          continent: "Asia"
-      },
-      {
-          name: "The Democratic Republic of Congo",
-          continent: "Africa"
-      },
-      {
-          name: "Togo",
-          continent: "Africa"
-      },
-      {
-          name: "Tokelau",
-          continent: "Oceania"
-      },
-      {
-          name: "Tonga",
-          continent: "Oceania"
-      },
-      {
-          name: "Trinidad and Tobago",
-          continent: "North America"
-      },
-      {
-          name: "Tunisia",
-          continent: "Africa"
-      },
-      {
-          name: "Turkey",
-          continent: "Asia"
-      },
-      {
-          name: "Turkmenistan",
-          continent: "Asia"
-      },
-      {
-          name: "Turks and Caicos Islands",
-          continent: "North America"
-      },
-      {
-          name: "Tuvalu",
-          continent: "Oceania"
-      },
-      {
-          name: "Uganda",
-          continent: "Africa"
-      },
-      {
-          name: "Ukraine",
-          continent: "Europe"
-      },
-      {
-          name: "United Arab Emirates",
-          continent: "Asia"
-      },
-      {
-          name: "United Kingdom",
-          continent: "Europe"
-      },
-      {
-          name: "United States",
-          continent: "North America"
-      },
-      {
-          name: "United States Minor Outlying Islands",
-          continent: "Oceania"
-      },
-      {
-          name: "Uruguay",
-          continent: "South America"
-      },
-      {
-          name: "Uzbekistan",
-          continent: "Asia"
-      },
-      {
-          name: "Vanuatu",
-          continent: "Oceania"
-      },
-      {
-          name: "Venezuela",
-          continent: "South America"
-      },
-      {
-          name: "Vietnam",
-          continent: "Asia"
-      },
-      {
-          name: "Virgin Islands, British",
-          continent: "North America"
-      },
-      {
-          name: "Virgin Islands, U.S.",
-          continent: "North America"
-      },
-      {
-          name: "Wales",
-          continent: "Europe"
-      },
-      {
-          name: "Wallis and Futuna",
-          continent: "Oceania"
-      },
-      {
-          name: "Western Sahara",
-          continent: "Africa"
-      },
-      {
-          name: "Yemen",
-          continent: "Asia"
-      },
-      {
-          name: "Zambia",
-          continent: "Africa"
-      },
-      {
-          name: "Zimbabwe",
-          continent: "Africa"
-      }
-    // Add more countries and continents here
-  ];
+    const content = document.createElement("div");
+    content.classList.add("overlay-content", "recipe-overlay");
   
-  //suggest countries function
-  function suggestCountries(inputValue) {
-    const suggestions = countriesData.filter(country =>
-      country.name.toLowerCase().includes(inputValue.toLowerCase())
-    );
-    return suggestions.slice(0, 5); // Return up to 5 suggestions
-  }
+    // Overlay Top: Recipe image
+    const overlayTop = document.createElement("div");
+    overlayTop.classList.add("overlay-top");
+    const img = document.createElement("img");
+    img.src = recipe.imageLink;
+    img.alt = "Recipe Image";
+    img.classList.add("responsive-img");
+    overlayTop.appendChild(img);
   
-  //adds clicked recomendation to the input box
-  function updateOriginSuggestion(inputValue) {
-    const originSuggestionList = document.getElementById("origin-suggestions");
-    originSuggestionList.innerHTML = "";
+    // Overlay Middle: Recipe title
+    const overlayMiddle = document.createElement("div");
+    overlayMiddle.classList.add("overlay-middle");
+    const title = document.createElement("h2");
+    title.textContent = recipe.name;
+    overlayMiddle.appendChild(title);
   
-    const suggestions = suggestCountries(inputValue);
+    // Overlay Bottom: Recipe details (difficulty, origin, base)
+    const overlayBottom = document.createElement("div");
+    overlayBottom.classList.add("overlay-bottom");
   
-    suggestions.forEach(suggestion => {
-      const suggestionItem = document.createElement("li");
-      suggestionItem.textContent = suggestion.name + " (" + suggestion.continent + ")";
-      suggestionItem.addEventListener("click", () => {
-        document.getElementById("recipe-origin").value = suggestion.name + ", " + suggestion.continent;
-        originSuggestionList.innerHTML = ""; // Clear suggestions
-      });
-      originSuggestionList.appendChild(suggestionItem);
+    // Left column: Difficulty and Origin
+    const leftCol = document.createElement("div");
+    leftCol.classList.add("overlay-left");
+    leftCol.appendChild(createOverlayDetail("DIFFICULTY:", recipe.difficulty));
+    leftCol.appendChild(createOverlayDetail("ORIGIN:", recipe.origin));
+  
+    // Right column: Base
+    const rightCol = document.createElement("div");
+    rightCol.classList.add("overlay-right");
+    rightCol.appendChild(createOverlayDetail("BASE:", recipe.base));
+  
+    // Bottom full-width: Recipe link and notes
+    const bottomCol = document.createElement("div");
+    bottomCol.classList.add("overlay-bottom-full");
+    const sectionTitle = document.createElement("p");
+    sectionTitle.classList.add("overlay-detail-title");
+    sectionTitle.textContent = "RECIPE:";
+    bottomCol.appendChild(sectionTitle);
+  
+    if (recipe.link) {
+      const linkElement = document.createElement("a");
+      linkElement.href = recipe.link;
+      linkElement.textContent = "View Recipe";
+      linkElement.target = "_blank";
+      bottomCol.appendChild(linkElement);
+    }
+    const notes = document.createElement("h3");
+    notes.textContent = recipe.notes;
+    bottomCol.appendChild(notes);
+  
+    overlayBottom.appendChild(leftCol);
+    overlayBottom.appendChild(rightCol);
+    overlayBottom.appendChild(bottomCol);
+  
+    // Assemble overlay content
+    content.appendChild(overlayTop);
+    content.appendChild(overlayMiddle);
+    content.appendChild(overlayBottom);
+    overlay.appendChild(content);
+    document.body.appendChild(overlay);
+  
+    // Close overlay on outside click or Esc key press
+    overlay.addEventListener("click", (e) => {
+      if (e.target === overlay) closeOverlay();
     });
+
+    function onKeyDown(e) {
+      if (e.key === "Escape") closeOverlay();
+    }
+    document.addEventListener("keydown", onKeyDown);
+
+    function closeOverlay() {
+        document.body.removeChild(overlay);
+        document.removeEventListener("keydown", onKeyDown);
+      }
   }
-
-  const originInput = document.getElementById("recipe-origin");
-  const originSuggestionList = document.getElementById("origin-suggestions");
   
-  originInput.addEventListener("input", event => {
-    const inputValue = event.target.value;
-    updateOriginSuggestion(inputValue);
+  /**
+   * Helper to create overlay detail sections.
+   * @param {string} label - Detail label.
+   * @param {string} value - Detail value.
+   * @returns {HTMLElement} - A paragraph element with the detail.
+   */
+  function createOverlayDetail(label, value) {
+    const detail = document.createElement("h3");
+    detail.textContent = label;
+    const valueEl = document.createElement("p");
+    valueEl.textContent = value;
+    const container = document.createElement("div");
+    container.appendChild(detail);
+    container.appendChild(valueEl);
+    return container;
+  }
   
-    if (inputValue) {
-      originSuggestionList.style.display = "block";
-    } else {
-      originSuggestionList.style.display = "none";
+  /**
+   * Display the recipe cards based on current filters.
+   */
+  function displayRecipes() {
+    const container = document.getElementById("recipes-container");
+    container.innerHTML = "";
+  
+    const searchFilter = document.getElementById("search").value.toLowerCase();
+    const difficultyFilter = document.getElementById("difficulty").value.toLowerCase();
+    const baseFilter = document.getElementById("base").value.toLowerCase();
+    const originFilter = document.getElementById("origin").value.toLowerCase();
+  
+    recipes.forEach((recipe) => {
+      if (
+        (difficultyFilter === "all" || recipe.difficulty.toLowerCase() === difficultyFilter) &&
+        (baseFilter === "all" || recipe.base.toLowerCase() === baseFilter) &&
+        (!originFilter || recipe.origin.toLowerCase().includes(originFilter)) &&
+        (!searchFilter || recipe.name.toLowerCase().includes(searchFilter))
+      ) {
+        const card = document.createElement("div");
+        card.classList.add("recipe-card");
+        card.addEventListener("click", () => createRecipeOverlay(recipe));
+  
+        // Card Top: Image
+        const cardTop = document.createElement("div");
+        cardTop.classList.add("card-top");
+        const img = document.createElement("img");
+        img.src = recipe.imageLink;
+        img.alt = "Recipe Image";
+        img.classList.add("responsive-img");
+        cardTop.appendChild(img);
+  
+        // Card Middle: Title
+        const cardMiddle = document.createElement("div");
+        cardMiddle.classList.add("card-middle");
+        const title = document.createElement("h2");
+        title.textContent = recipe.name;
+        cardMiddle.appendChild(title);
+  
+        // Card Bottom: Difficulty and Origin
+        const cardBottom = document.createElement("div");
+        cardBottom.classList.add("card-bottom");
+  
+        // Difficulty with dots
+        const difficultyDiv = document.createElement("div");
+        difficultyDiv.classList.add("card-difficulty");
+        const diffTitle = document.createElement("h3");
+        diffTitle.classList.add("card-title");
+        diffTitle.textContent = "DIFFICULTY";
+        difficultyDiv.appendChild(diffTitle);
+  
+        const dotsContainer = document.createElement("div");
+        dotsContainer.classList.add("card-dots");
+        const totalDots = 3;
+        let filledDots = recipe.difficulty.toLowerCase() === "easy"
+          ? 1
+          : recipe.difficulty.toLowerCase() === "medium"
+          ? 2
+          : recipe.difficulty.toLowerCase() === "hard"
+          ? 3
+          : 0;
+        for (let i = 0; i < totalDots; i++) {
+          const dot = document.createElement("span");
+          dot.classList.add("dot");
+          if (i < filledDots) dot.classList.add("filled");
+          dotsContainer.appendChild(dot);
+        }
+        difficultyDiv.appendChild(dotsContainer);
+  
+        // Origin
+        const originDiv = document.createElement("div");
+        originDiv.classList.add("card-origin");
+        const originTitle = document.createElement("h3");
+        originTitle.classList.add("card-title");
+        originTitle.textContent = "ORIGIN";
+        originDiv.appendChild(originTitle);
+        const originValue = document.createElement("p");
+        originValue.classList.add("card-origin-value");
+        originValue.textContent = recipe.origin;
+        originDiv.appendChild(originValue);
+  
+        cardBottom.appendChild(difficultyDiv);
+        cardBottom.appendChild(originDiv);
+  
+        // Assemble card
+        card.appendChild(cardTop);
+        card.appendChild(cardMiddle);
+        card.appendChild(cardBottom);
+        container.appendChild(card);
+      }
+    });
+  
+    // Update recipe counter
+    document.getElementById("recipe-counter").textContent =
+      "Total Recipes: " + container.childElementCount;
+  }
+  
+  /**
+   * Shuffle the recipes array using Fisher-Yates algorithm.
+   * @param {Array} array - The array to shuffle.
+   */
+  function shuffleArray(array) {
+    for (let i = array.length - 1; i > 0; i--) {
+      const j = Math.floor(Math.random() * (i + 1));
+      [array[i], array[j]] = [array[j], array[i]];
     }
-  });
+  }
   
-  document.addEventListener("click", event => {
-    if (!originSuggestionList.contains(event.target)) {
-      originSuggestionList.style.display = "none";
-    }
-  });
-
-  //email button
+  /*------------------------------------------------------------------------------
+    EMAIL FUNCTIONALITY
+  ------------------------------------------------------------------------------*/
   function generateEmailBody() {
     const recipeTextOutput = document.getElementById("recipe-text-output");
     return encodeURIComponent(recipeTextOutput.textContent);
@@ -1250,18 +399,56 @@
     const emailSubject = encodeURIComponent("Recipes for You");
     const emailAddress = "lucabusby@bluewin.ch";
     const mailtoLink = `mailto:${emailAddress}?subject=${emailSubject}&body=${emailBody}`;
-  
+    
     window.location.href = mailtoLink;
   }
   
   document.getElementById("send-to-email-btn").addEventListener("click", sendRecipesByEmail);
-
-  document.getElementById("difficulty").addEventListener("change", displayRecipes);
-  document.getElementById("food").addEventListener("change", displayRecipes);
-  document.getElementById("base").addEventListener("change", displayRecipes);
-  document.getElementById("origin").addEventListener("input", displayRecipes);
-  document.getElementById("search").addEventListener("input", displayRecipes);
-  document.getElementById("randomize-btn").addEventListener("click", onRandomizeButtonClick);
   
-  // Initial display of recipes
-  displayRecipes();
+  /*------------------------------------------------------------------------------
+    EVENT LISTENERS & INITIALIZATION
+  ------------------------------------------------------------------------------*/
+  // Lightbox and recipe form events
+  document.getElementById("copy-to-clipboard-btn").addEventListener("click", copyToClipboard);
+  document.getElementById("clear-recipes-btn").addEventListener("click", clearRecipes);
+  document.getElementById("add-recipe-btn").addEventListener("click", showLightbox);
+  document.getElementById("recipe-form").addEventListener("submit", (event) => {
+    event.preventDefault();
+    createRecipeObject();
+  });
+  
+  // Filter lightbox events
+  document.getElementById("filter-btn").addEventListener("click", () => {
+    const filterLightbox = document.getElementById("filter-lightbox");
+    filterLightbox.style.display = "flex";
+    document.addEventListener("keydown", filterLightboxEscHandler);
+  });
+  
+  document.getElementById("filter-lightbox").addEventListener("click", (e) => {
+    if (e.target === e.currentTarget) closeFilterLightbox();
+  });
+  
+  function filterLightboxEscHandler(e) {
+    if (e.key === "Escape") closeFilterLightbox();
+  }
+  
+  function closeFilterLightbox() {
+    const filterLightbox = document.getElementById("filter-lightbox");
+    filterLightbox.style.display = "none";
+    document.removeEventListener("keydown", filterLightboxEscHandler);
+  }
+  
+  document.getElementById("apply-filters-btn").addEventListener("click", () => {
+    closeFilterLightbox();
+    updateAppliedFilters();
+    displayRecipes();
+  });
+  
+  // Update recipes on search input change
+  document.getElementById("search").addEventListener("input", displayRecipes);
+  
+  // On page load: shuffle and display recipes
+  window.onload = function () {
+    shuffleArray(recipes);
+    displayRecipes();
+  };
