@@ -312,7 +312,7 @@ a {
   border-radius: 30px;
   width: 100%;
   max-width: 600px;
-  max-height: 90vh;
+  max-height: 90dvh;
   color: var(--dark-green);
   position: relative;
   box-sizing: border-box;
