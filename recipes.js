@@ -5,7 +5,7 @@ const recipes = [
     food: "meat",
     base: "bread",
     origin: "France, Europe",
-    imageLink: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQVrrPX6cWTnAnSlzr2NeOTT42guOS_CY2fCaV5kHvd8h0spiJtCtYgwLU2jpcB8P8RRc0&usqp=CAU",
+    imageLink: "https://www.santosgrills.de/grill-magazin/wp-content/uploads/2022/12/Steak-Sandwich-vom-Grill.jpg",
     link: "https://www.youtube.com/watch?app=desktop&v=jwu2y9x5OlM&t=5m06s&ab_channel=GordonRamsay",
     notes: "",
   },
@@ -85,7 +85,7 @@ const recipes = [
       "food": "vegetarian",
       "base": "pasta",
       "origin": "France, Europe",
-      "imageLink": "https://www.kleinkuenstlerkueche.de/wp-content/uploads/2021/02/Ratatouille-Pasta-RB.jpg",
+      "imageLink": "https://static01.nyt.com/images/2024/06/04/multimedia/vc-one-pot-ratatouille-pastarex-gqcp/vc-one-pot-ratatouille-pastarex-gqcp-mediumSquareAt3X.jpg",
       "link": "",
       "notes": "Pasta with:\n\nOnions, Garlic, Zuccini, Aubergine, Tomatoes, Paprika & Belati."
     },
@@ -205,7 +205,7 @@ const recipes = [
       "food": "vegetarian",
       "base": "rice",
       "origin": "Thailand, Asia",
-      "imageLink": "https://eadn-wc05-5516459.nxedge.io/wp-content/uploads/2022/10/Thai-Red-Curry-by-Raya-70-Full-plate-square.jpg",
+      "imageLink": "https://thewoksoflife.com/wp-content/uploads/2023/04/thai-red-curry-chicken-9.jpg",
       "link": "https://thewoksoflife.com/wp-content/uploads/2023/04/thai-red-curry-chicken-9.jpg",
       "notes": ""
     },
