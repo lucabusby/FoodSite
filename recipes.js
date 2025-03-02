@@ -382,7 +382,60 @@ const recipes = [
       "imageLink": "https://cdn.prod.www.spiegel.de/images/ffe4048e-1814-4ed0-8f92-654af34c0950_w1200_r1.33_fpx49_fpy53.jpg",
       "link": "https://redhousespice.com/biang-biang-noodles/",
       "notes": ""
+    },
+    {
+      "name": "Udon",
+      "difficulty": "easy",
+      "base": "noodles",
+      "origin": "Japan, Asia",
+      "imageLink": "https://omnivorescookbook.com/wp-content/uploads/2019/08/1405_Easy-Chicken-Udon-Soup_004.jpg",
+      "link": "",
+      "notes": "need good recipe"
+    },
+    {
+      "name": "Poke Bowl",
+      "difficulty": "easy",
+      "base": "rice",
+      "origin": "Hawaii, öpis",
+      "imageLink": "https://www.allrecipes.com/thmb/OdfjOGRlpU8EP-ysOH_s6L1LCPo=/1500x0/filters:no_upscale():max_bytes(150000):strip_icc()/4505366-b19512478b584a5f801fe3c1736befe6.jpg",
+      "link": "https://momsdish.com/hawaiian-poke-bowl",
+      "notes": ""
+    },
+    {
+      "name": "Fried Rice",
+      "difficulty": "easy",
+      "base": "rice",
+      "origin": "Indonesia, Asia",
+      "imageLink": "https://i.ytimg.com/vi/SG6itbjUCuA/maxresdefault.jpg",
+      "link": "https://www.youtube.com/watch?v=FrUfwpaNNIM&ab_channel=mrnigelng",
+      "notes": ""
+    },
+    {
+      "name": "Focaccia",
+      "difficulty": "easy",
+      "base": "bread",
+      "origin": "Italy, Europe",
+      "imageLink": "https://images.ctfassets.net/0e6jqcgsrcye/5rZjjDlzxAPgUj2zPlWwI/bbd88685d9052a170cac462781ba4e4e/garlicandparmesanfocaccia_thumbnail.jpg",
+      "link": "https://alexandracooks.com/2018/03/02/overnight-refrigerator-focaccia-best-focaccia/",
+      "notes": ""
+    },
+    {
+      "name": "Pesto Pasta",
+      "difficulty": "easy",
+      "base": "pasta",
+      "origin": "Italy, Europe",
+      "imageLink": "https://richanddelish.com/wp-content/uploads/2023/02/creamy-pesto-pasta-1.jpg",
+      "link": "",
+      "notes": "Just pasta and pesto calm down"
+    },
+    {
+      "name": "Rösti",
+      "difficulty": "medium",
+      "base": "vegetables",
+      "origin": "Switzerland, Europe",
+      "imageLink": "https://www.kartoffel.ch/_Resources/Persistent/434dc8ab99bc6f2d5a88fec960b01b3dcf65b4f0/Roesti%20nach%20Grossmutterart.jpg",
+      "link": "",
+      "notes": "need good recipe"
     }
-
   // Add more recipes here
 ];
