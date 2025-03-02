@@ -47,7 +47,18 @@
     <!-- LIGHTBOX: Filter Controls -->
     <div class="overlay" id="filter-lightbox" style="display: none">
       <div class="overlay-content recipe-overlay">
-        <h2>Filter Recipes</h2>
+        <div
+          style="
+            display: flex;
+            justify-content: space-between;
+            align-items: top;
+          "
+        >
+          <h2>Filter Recipes</h2>
+          <button class="close-button">
+            <img src="Close.svg" alt="Add Icon" class="icon" />
+          </button>
+        </div>
         <form id="filter-form">
           <div class="filter-form-grid">
             <div class="filter-field">
@@ -93,7 +104,18 @@
     <!-- LIGHTBOX: Add Recipe -->
     <div class="overlay" id="add-recipe-lightbox" style="display: none">
       <div class="overlay-content recipe-overlay">
-        <h2>Add Recipe</h2>
+        <div
+          style="
+            display: flex;
+            justify-content: space-between;
+            align-items: top;
+          "
+        >
+          <h2>Add Recipes</h2>
+          <button class="close-button">
+            <img src="Close.svg" alt="Add Icon" class="icon" />
+          </button>
+        </div>
         <form id="recipe-form">
           <div class="filter-form-grid">
             <div class="filter-field">
@@ -116,11 +138,15 @@
             <div class="filter-field">
               <h3 for="recipe-base" class="card-title">Base:</h3>
               <select id="recipe-base" class="dropdown">
+                <option value="all">All Bases</option>
+                <option value="none">None</option>
                 <option value="bread">Bread</option>
                 <option value="rice">Rice</option>
                 <option value="pasta">Pasta</option>
                 <option value="grains">Grains</option>
-                <option value="none">None</option>
+                <option value="noodles">Noodles</option>
+                <option value="vegetables">Vegetables</option>
+                <option value="other">Other</option>
               </select>
             </div>
             <div class="filter-field">

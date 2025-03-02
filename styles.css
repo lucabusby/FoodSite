@@ -124,6 +124,32 @@ a {
   justify-content: center;
 }
 
+.close-button {
+  width: 40px;
+  height: 40px;
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  background: none;
+  border: 2px solid var(--dark-green);
+  border-radius: 50%;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.in-image {
+  top: -10px;
+  right: -10px;
+  z-index: 2;
+  background-color: var(--light-green);
+}
+
+.close-button .icon {
+  transform: scale(0.7);
+}
+
 .add-button {
   justify-self: right;
 }
@@ -145,7 +171,7 @@ a {
   border-radius: 50px;
   font-size: 2rem;
   text-align: left;
-  padding-left: 50px;
+  padding: 0 0 0 50px;
   color: var(--dark-green);
 }
 
@@ -154,6 +180,11 @@ a {
 .search:hover {
   background: var(--light-green);
   transition: background-color 0.6s;
+}
+
+.search::placeholder {
+  font-size: 2rem;
+  color: var(--dark-green);
 }
 
 /*------------------------------------------------------------------------------
@@ -182,33 +213,6 @@ a {
   margin: 0 8vw 120px 8vw;
   column-gap: 20px;
   text-transform: uppercase;
-}
-
-/* Responsive column counts */
-@media (min-width: 2100px) {
-  .grid-container {
-    column-count: 5;
-  }
-}
-@media (max-width: 2099px) and (min-width: 1700px) {
-  .grid-container {
-    column-count: 4;
-  }
-}
-@media (max-width: 1699px) and (min-width: 1200px) {
-  .grid-container {
-    column-count: 3;
-  }
-}
-@media (max-width: 1199px) and (min-width: 700px) {
-  .grid-container {
-    column-count: 2;
-  }
-}
-@media (max-width: 699px) {
-  .grid-container {
-    column-count: 1;
-  }
 }
 
 /*------------------------------------------------------------------------------
@@ -303,18 +307,24 @@ a {
 
 .overlay-content {
   background-color: var(--light-green);
-  padding: 40px 20px 20px 20px;
+  padding: 20px 20px 20px 20px;
   border: 3px solid var(--dark-green);
   border-radius: 30px;
   width: 100%;
   max-width: 600px;
+  max-height: 90vh;
   color: var(--dark-green);
   position: relative;
   box-sizing: border-box;
+  overflow-y: auto;
+  overflow-x: hidden;
+  scrollbar-width: none;
+  -ms-overflow-style: none;
 }
 
 /* Overlay Sections */
 .overlay-top {
+  position: relative;
   margin-bottom: 20px;
 }
 
@@ -327,7 +337,7 @@ a {
 
 /* Full-width bottom details (recipe link and notes) */
 .overlay-bottom-full {
-  width: 200%;
+  width: 220%;
   padding-top: 10px;
   border-top: 1px solid var(--dark-green);
 }
@@ -416,10 +426,80 @@ a {
 }
 
 /*------------------------------------------------------------------------------
+  RESPONSIVE VALUES
+------------------------------------------------------------------------------*/
+
+@media (min-width: 2100px) {
+  .grid-container {
+    column-count: 5;
+  }
+}
+@media (max-width: 2099px) and (min-width: 1700px) {
+  .grid-container {
+    column-count: 4;
+  }
+}
+@media (max-width: 1699px) and (min-width: 1200px) {
+  .grid-container {
+    column-count: 3;
+  }
+}
+@media (max-width: 1199px) and (min-width: 700px) {
+  .grid-container {
+    column-count: 2;
+  }
+  .header {
+    margin-top: 60px;
+  }
+}
+@media (max-width: 699px) {
+  .grid-container {
+    column-count: 1;
+  }
+  .overlay-content {
+    max-width: 90vw;
+  }
+  .header {
+    margin-top: 40px;
+  }
+  #applied-filters {
+    grid-column: 1 / span 6;
+  }
+  .search {
+    height: 50px;
+    padding-left: 20px;
+  }
+  .search::placeholder {
+    font-size: 1.7rem;
+  }
+  .filter-btn,
+  .add-button {
+    width: 50px;
+    height: 50px;
+  }
+  .filter-btn .icon {
+    padding-top: 5px;
+    transform: scale(0.5);
+  }
+  .add-button .icon {
+    transform: scale(0.6);
+  }
+  h2 {
+    font-size: 3.5rem;
+    line-height: 3.2rem;
+  }
+}
+
+/*------------------------------------------------------------------------------
   CUSTOM SCROLLBAR & HIGHLIGHTING STYLES
 ------------------------------------------------------------------------------*/
+
 ::-webkit-scrollbar {
   width: 10px;
+}
+
+.overlay-content::-webkit-scrollbar {
+  display: none;
 }
 
 ::-webkit-scrollbar-track {
