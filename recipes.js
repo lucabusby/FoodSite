@@ -13,7 +13,7 @@ const recipes = [
     "name": "Salmon",
     "difficulty": "medium",
     "food": "meat",
-    "base": "none",
+    "base": "fish",
     "origin": "France Europe",
     "imageLink": "https://www.foodandwine.com/thmb/0Q_VTxhpKxzZih_7e8WfnpcWx64=/1500x0/filters:no_upscale():max_bytes(150000):strip_icc()/How-to-Cook-Salmon-FT-BLOG1222-10de5a17538c4c9ea812b1372a221110.jpg",
     "link": "https://www.youtube.com/watch?v=rR9wq5uN_q8&ab_channel=TheFWord",
@@ -23,7 +23,7 @@ const recipes = [
     "name": "Cheese Capuns",
     "difficulty": "medium",
     "food": "vegetarian",
-    "base": "none",
+    "base": "other",
     "origin": "Switzerland, Europe",
     "imageLink": "https://www.bio-suisse.ch/.imaging/mte/biosuisse-theme/medium/dam/konsumenten/rezepte/Bilder/BIO_BIOSUISSE_072012_04.jpg/jcr:content/BIO_BIOSUISSE_072012_04.jpg",
     "link": "https://www.wildeisen.ch/rezepte/kaese-capuns-mit-kraeutern",
@@ -57,7 +57,7 @@ const recipes = [
     "origin": "Italy, Europe",
     "imageLink": "https://biancazapatka.com/wp-content/uploads/2019/12/vegan-mushroom-stroganoff-best-recipe-creamy-pasta-sauce.jpg",
     "link": "",
-    "notes": "Steinporcino mushroom/Champignons, Leek!"
+    "notes": "Steinpilz/Champignons, Leek!"
   },
   {
       "name": "Steak with Mashed Potatoes",
@@ -211,17 +211,17 @@ const recipes = [
     },
     {
       "name": "Tikka Masala",
-      "difficulty": "medium",
+      "difficulty": "hard",
       "food": "meat",
       "base": "none",
       "origin": "India, Asia",
       "imageLink": "https://hips.hearstapps.com/hmg-prod/images/chicken-tikka-masala1-1663341991.jpg?crop=0.683xw:1.00xh;0.221xw,0&resize=1200:*",
       "link": "",
-      "notes": ""
+      "notes": "no recipe yet, please send a good one"
     },
     {
       "name": "Butter Chicken",
-      "difficulty": "medium",
+      "difficulty": "hard",
       "food": "meat",
       "base": "bread",
       "origin": "India, Asia",
@@ -237,7 +237,7 @@ const recipes = [
       "origin": "China, Asia",
       "imageLink": "https://www.kitchensanctuary.com/wp-content/uploads/2019/07/Gua-Bao-Buns-Pork-Belly-tall-FS-7272.webp",
       "link": "https://redhousespice.com/bao/",
-      "notes": ""
+      "notes": "also with fried oyster mushrooms in panko"
     },
     {
       "name": "Summer Rolls",
@@ -263,7 +263,7 @@ const recipes = [
       "name": "Korean Fried Chicken",
       "difficulty": "easy",
       "food": "meat",
-      "base": "none",
+      "base": "meat",
       "origin": "South Korea, Asia",
       "imageLink": "https://www.kitchensanctuary.com/wp-content/uploads/2019/08/Korean-Fried-Chicken-foodporn-7373.jpg",
       "link": "https://mykoreankitchen.com/korean-fried-chicken/",
@@ -303,7 +303,7 @@ const recipes = [
       "name": "Gyros",
       "difficulty": "easy",
       "food": "vegetarian",
-      "base": "none",
+      "base": "bread",
       "origin": "Greece, Europe",
       "imageLink": "https://www.greekboston.com/wp-content/uploads/2018/07/Traditional-Gyro.jpg",
       "link": "https://realgreekrecipes.com/gyros-recipe/",
@@ -329,5 +329,60 @@ const recipes = [
       "link": "https://www.youtube.com/watch?v=n761vBlhn7g&ab_channel=YeungManCooking",
       "notes": ""
     },
+    {
+      "name": "Tantanmen",
+      "difficulty": "easy",
+      "base": "noodles",
+      "origin": "China/Japan, Asia",
+      "imageLink": "https://farahjeats.com/wp-content/uploads/2024/10/IMG_1288_jpg.jpg",
+      "link": "https://thewoksoflife.com/tan-tan-ramen/",
+      "notes": ""
+    },
+    {
+      "name": "Gyoza",
+      "difficulty": "easy",
+      "base": "other",
+      "origin": "Japan, Asia",
+      "imageLink": "https://cookingwithdog.com/wp-content/uploads/2017/04/yaki-gyoza-00.jpg",
+      "link": "https://www.justonecookbook.com/gyoza/",
+      "notes": ""
+    },
+    {
+      "name": "Tom Kha Gai",
+      "difficulty": "easy",
+      "base": "soup",
+      "origin": "Thailand, Asia",
+      "imageLink": "https://image.essen-und-trinken.de/13055302/t/-S/v3/w960/r1/-/eut202110146-tom-kha-gai.jpg",
+      "link": "https://hot-thai-kitchen.com/tom-ka-gai/#recipe",
+      "notes": ""
+    },
+    {
+      "name": "Chicken Tonkatsu",
+      "difficulty": "easy",
+      "base": "meat",
+      "origin": "Japan, Asia",
+      "imageLink": "https://cdn.apartmenttherapy.info/image/upload/f_auto,q_auto:eco,c_fill,g_auto,w_1500,ar_3:2/k%2FPhoto%2FRecipes%2F2024-05-chicken-katsu-190%2Fchicken-katsu-190-069-horizontal",
+      "link": "https://www.justonecookbook.com/chicken-katsu/",
+      "notes": ""
+    },
+    {
+      "name": "Arayes",
+      "difficulty": "easy",
+      "base": "bread",
+      "origin": "Middle East",
+      "imageLink": "https://images.getrecipekit.com/20240712040032-arayes_07.png?aspect_ratio=1:1&quality=90&",
+      "link": "https://www.fufuskitchen.com/arayes/",
+      "notes": ""
+    },
+    {
+      "name": "Biang Biang Noodles",
+      "difficulty": "easy",
+      "base": "noodles",
+      "origin": "China, Asia",
+      "imageLink": "https://cdn.prod.www.spiegel.de/images/ffe4048e-1814-4ed0-8f92-654af34c0950_w1200_r1.33_fpx49_fpy53.jpg",
+      "link": "https://redhousespice.com/biang-biang-noodles/",
+      "notes": ""
+    }
+
   // Add more recipes here
 ];
