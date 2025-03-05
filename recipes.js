@@ -1,13 +1,12 @@
 const recipes = [
   {
-    name: "Steak Sandwich",
+    name: "Sandwich",
     difficulty: "medium",
-    food: "meat",
     base: "bread",
     origin: "France, Europe",
-    imageLink: "https://www.santosgrills.de/grill-magazin/wp-content/uploads/2022/12/Steak-Sandwich-vom-Grill.jpg",
+    imageLink: "https://www.lidl-kochen.de/uploads/1n/63d1ace59b7d4.jpg",
     link: "https://www.youtube.com/watch?app=desktop&v=jwu2y9x5OlM&t=5m06s&ab_channel=GordonRamsay",
-    notes: "",
+    notes: "just make a sandwich",
   },
   {
     "name": "Salmon",
@@ -396,7 +395,7 @@ const recipes = [
       "name": "Poke Bowl",
       "difficulty": "easy",
       "base": "rice",
-      "origin": "Hawaii, öpis",
+      "origin": "Hawaii, Oceania",
       "imageLink": "https://www.allrecipes.com/thmb/OdfjOGRlpU8EP-ysOH_s6L1LCPo=/1500x0/filters:no_upscale():max_bytes(150000):strip_icc()/4505366-b19512478b584a5f801fe3c1736befe6.jpg",
       "link": "https://momsdish.com/hawaiian-poke-bowl",
       "notes": ""
