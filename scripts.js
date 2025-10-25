@@ -424,6 +424,7 @@ function shuffleArray(array) {
 /*------------------------------------------------------------------------------
   EMAIL FUNCTIONALITY
 ------------------------------------------------------------------------------*/
+document.getElementById("send-to-email-btn").addEventListener("click", sendRecipesByEmail);
 function generateEmailBody() {
   const recipeTextOutput = document.getElementById("recipe-text-output");
   return encodeURIComponent(recipeTextOutput.textContent);

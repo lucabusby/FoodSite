@@ -1,7 +1,7 @@
 const recipes = [
   {
     name: "Sandwich",
-    difficulty: "medium",
+    difficulty: "easy",
     base: "bread",
     origin: "France, Europe",
     imageLink: "https://www.lidl-kochen.de/uploads/1n/63d1ace59b7d4.jpg",
