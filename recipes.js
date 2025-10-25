@@ -435,6 +435,69 @@ const recipes = [
       "imageLink": "https://www.kartoffel.ch/_Resources/Persistent/434dc8ab99bc6f2d5a88fec960b01b3dcf65b4f0/Roesti%20nach%20Grossmutterart.jpg",
       "link": "",
       "notes": "need good recipe"
+    },
+    {
+      "name": "Gnocchi",
+      "difficulty": "easy",
+      "base": "vegetables",
+      "origin": "Italy, Europe",
+      "imageLink": "https://www.kingarthurbaking.com/sites/default/files/styles/featured_image/public/2025-02/Potato-Gnocchi_2025_Lifestyle_ALT_H_045.jpg?itok=bYYFrg-L",
+      "link": "",
+      "notes": "mit:\n- Carbonara\n- Salbeibutter\n- Tomatesauce\n- Pesto"
+    },
+    {
+      "name": "Chicken Curry",
+      "difficulty": "hard",
+      "base": "rice",
+      "origin": "Sri Lanka, Asia",
+      "imageLink": "https://www.theflavorbender.com/wp-content/uploads/2018/02/Sri-Lankan-Chicken-Curry-The-Flavor-Bender-2-1.jpg",
+      "link": "https://www.kingarthurbaking.com/sites/default/files/styles/featured_image/public/2025-02/Potato-Gnocchi_2025_Lifestyle_ALT_H_045.jpg?itok=bYYFrg-L",
+      "notes": ""
+    },
+    {
+      "name": "Roti",
+      "difficulty": "hard",
+      "base": "bread",
+      "origin": "Sri Lanka, Asia",
+      "imageLink": "https://www.grandchancellor.lk/wp-content/uploads/2021/10/Parata-.jpg",
+      "link": "https://www.theflavorbender.com/flaky-roti-canai-recipe/",
+      "notes": ""
+    },
+    {
+      "name": "Kottu Roti",
+      "difficulty": "easy",
+      "base": "bread",
+      "origin": "Sri Lanka, Asia",
+      "imageLink": "https://sp-ao.shortpixel.ai/client/to_webp,q_glossy,ret_img,w_1024/https://topsrilankanrecipe.com/wp-content/uploads/2020/07/20a.jpg",
+      "link": "https://topsrilankanrecipe.com/best-chicken-kottu-roti-recipe-sri-lankan-kothu-parotta/",
+      "notes": ""
+    },
+    {
+      "name": "Carbonara",
+      "difficulty": "medium",
+      "base": "pasta",
+      "origin": "Italy, Europe",
+      "imageLink": "https://www.recipesfromitaly.com/wp-content/uploads/2021/04/authentic-carbonara-recipe-1x1-1200x1200-1.jpg",
+      "link": "https://www.youtube.com/watch?v=8gA2JUSPh1o&ab_channel=GinoD%27Acampo",
+      "notes": ""
+    },
+    {
+      "name": "Cherry Tomate Sauce",
+      "difficulty": "easy",
+      "base": "pasta",
+      "origin": "Italy, Europe",
+      "imageLink": "https://healthylivingjames.co.uk/wp-content/uploads/2023/12/Cherry-Tomato-Pasta-Sauce-Square.jpg",
+      "link": "",
+      "notes": "- sweated onios\n- garlic\n- cherry tomate\n- basilikum, thymian\n- pepper, salt\n- vill butter oder öl"
+    },
+    {
+      "name": "Semmelknödel mit Pilzrahmsauce",
+      "difficulty": "medium",
+      "base": "bread",
+      "origin": "Austria, Europe",
+      "imageLink": "https://images.eatsmarter.de/sites/default/files/styles/facebook/public/semmelknoedel-mit-sahne-specksauce-403650.jpg",
+      "link": "https://www.einfachkochen.de/rezepte/semmelknoedel-mit-pilzrahmsosse-so-unglaublich-lecker",
+      "notes": "Tessinerbrot ist amazing,\nkeine Zwiebel in die Knödel, stattdessen Fleisch/Pilze/Karotten(sehr klein Hacken)/etc.\nTeig darf nicht zu nass werden,\nfalls die Knödel zu nass sind Mehl dazu"
     }
   // Add more recipes here
 ];
